@@ -1,13 +1,9 @@
 <?php
 include 'spp_aksi.php';
 
-// if (!isset($_GET['nisn'])) {
-//     header('Location: ../siswa.php');
-//     exit;
-// }
-
-$id_spp = $_GET['id_spp'];
+$id_spp = $_GET['id'];
 $spp = getSppById($id_spp);
+
 
 if (!$spp) {
     echo "Data spp tidak ditemukan.";
@@ -31,9 +27,12 @@ if (isset($_POST['update'])) {
 </head>
 
 <body class="bg-gray-100">
+    <?php
+    include '../../componen/navbar.php';
+    ?>
 <div class="container mx-auto my-5 p-5 bg-white rounded shadow-md">
     <h1 class="text-2xl font-bold mb-4">Edit Spp</h1>
-    <form action="spp_aksi.php" method="POST">
+    <form action="" method="POST">
     <input type="hidden" name="id_spp" value="<?= htmlspecialchars($spp['id_spp']); ?>">
         <div class="mb-3">
             <label class="block font-semibold">Tahun</label>
@@ -44,8 +43,10 @@ if (isset($_POST['update'])) {
             <input type="text" name="nominal" value="<?= htmlspecialchars($spp['nominal']); ?>" class="w-full px-4 py-2 border rounded" required>
         </div>
         <div class="flex justify-end">
-            <a href="/admin/spp.php" class="mr-3 px-4 py-2 bg-gray-300 rounded">Batal</a>
-            <button type="submit" name="update" class="px-4 py-2 bg-blue-600 text-white rounded">Update</button>
+            <a href="/php-front/admin/spp/index.php" class="mr-3 px-4 py-2 bg-gray-300 rounded">Batal</a>
+            <button type="submit" name="update" class="px-4 py-2 bg-blue-600 text-white rounded"
+            onclick="return confirm('Yakin ingin update data ini?')"
+            >Update</button>
         </div>
     </form>
 </div>

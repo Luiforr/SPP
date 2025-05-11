@@ -1,11 +1,11 @@
 <?php
-include '../siswa_aksi.php';
+include 'siswa_aksi.php';
 session_start();
 
 if (isset($_POST['create'])) {
   createSiswa($_POST['nisn'], $_POST['nis'], $_POST['nama'], $_POST['id_kelas'], $_POST['id_spp'], $_POST['password']);
 
-  header('Location: ../siswa.php?success=update');
+  header('Location: php-front/admin/siswa.php?success=update');
   exit;
 }
 ?>
@@ -80,7 +80,7 @@ if (isset($_POST['create'])) {
       </div>
 
       <div class="flex justify-between">
-        <a href="../siswa.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400">Kembali</a>
+        <a href="../siswa/index.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400">Kembali</a>
         <button type="submit" name="create" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Simpan</button>
       </div>
     </form>

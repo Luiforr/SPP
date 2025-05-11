@@ -18,15 +18,11 @@ function register($table, $username, $password) {
         ':username' => $username,
         ':password' => $hashedPassword
     ]);
-
     return true;
 }
 
-
-
 function login ($tipe, $username, $password){
     $conn = getDatabaseConnection();
-
     $res = $conn->prepare("SELECT * FROM $tipe WHERE username = :username");
     $res->execute([$username]);
     $data = $res->fetch(PDO ::FETCH_ASSOC);

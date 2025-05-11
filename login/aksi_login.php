@@ -11,7 +11,7 @@ function loginUser($username , $password )
 
     if($user && password_verify($password, $user['password'])){
         $_SESSION['username'] = $user ['username'];
-        header("Location: /php-front/admin/spp.php");
+        header("Location: /php-front/admin/kelas/index.php");
     }else{
         return "Gagal";
     }

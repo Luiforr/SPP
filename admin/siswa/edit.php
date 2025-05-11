@@ -1,8 +1,8 @@
 <?php
 include 'siswa_aksi.php';
-
+include '../../componen/navbar.php';
 if (!isset($_GET['nisn'])) {
-    header('Location: ../siswa.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -15,8 +15,8 @@ if (!$siswa) {
 }
 
 if (isset($_POST['update'])) {
-    updateSiswa($_POST['nis'], $_POST['nama'], $_POST['id_kelas'], $nisn);
-    header('Location: ../siswa.php?success=update');
+    updateSiswa($_POST['nis'], $_POST['nama'], $_POST['id_kelas'], $_POST['id_spp'], $nisn);
+    header('Location:  php-front/admin/siswa/index.php?success=update');
     exit;
 }
 ?>
@@ -27,6 +27,8 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <title>Edit Siswa</title>
     <link href="../../output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 </head>
 <body class="bg-gray-100">
 <div class="container mx-auto my-5 p-5 bg-white rounded shadow-md">
@@ -45,9 +47,15 @@ if (isset($_POST['update'])) {
             <label class="block font-semibold">Kelas</label>
             <input type="text" name="id_kelas" value="<?= htmlspecialchars($siswa['id_kelas']); ?>" class="w-full px-4 py-2 border rounded" required>
         </div>
+        <div class="mb-3">
+            <label class="block font-semibold">Id SPP</label>
+            <input type="text" name="id_spp" value="<?= htmlspecialchars($siswa['id_spp']); ?>" class="w-full px-4 py-2 border rounded" required>
+        </div>
         <div class="flex justify-end">
-            <a href="../siswa.php" class="mr-3 px-4 py-2 bg-gray-300 rounded">Batal</a>
-            <button type="submit" name="update" class="px-4 py-2 bg-blue-600 text-white rounded">Update</button>
+            <a href="../siswa/index.php" class="mr-3 px-4 py-2 bg-gray-300 rounded">Batal</a>
+            <button type="submit" name="update" class="px-4 py-2 bg-blue-600 text-white rounded"
+            onclick="return confirm('Yakin ingin update data ini?')"
+            >Update</button>
         </div>
     </form>
 </div>

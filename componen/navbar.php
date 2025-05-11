@@ -1,5 +1,5 @@
 
-<nav class="bg-[#4692AF] sticky z-50 top-0">
+<nav class="bg-[#2D5074] sticky z-50 top-0">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -23,26 +23,23 @@
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex shrink-0 items-center">
-          <img class="h-8 w-auto" src="" alt="Logo">
+          <a  href="/php-front/admin/dashboard.php" class="h-8 w-auto text-white text-2xl font-medium cursor-pointer">Logo</a>
         </div>
-        <div class="hidden sm:ml-6 sm:block">
-          <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/php-front/admin/spp.php" class="rounded-md py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
-            <a href="/php-front/admin/petugas.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Petugas</a>
-            <a href="/php-front/admin/siswa.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Siswa</a>
-            <a href="/php-front/admin/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Kelas</a>
-            <a href="/php-front/admin/laporan.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Laporan</a>
-
-
-          </div>
-           
-        </div>
+       
          
       </div>
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        <form action="../admin/aksi_logout.php">
-    <button action="../admin/aksi_logout.php"  class="px-2 py-1 w-23 bg-red-600 cursor-pointer text-slate-200 rounded-md" type="submit">Logout</button>
+      <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <a href="/php-front/admin/spp/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">SPP</a>
+            <a href="/php-front/admin/petugas/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Petugas</a>
+            <a href="/php-front/admin/siswa/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Siswa</a>
+            <a href="/php-front/admin/kelas/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Kelas</a>
+            <a href="/php-front/admin/laporan/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Laporan</a>
+          </div>
+        </div>
+        <form action="../aksi_logout.php">
+    <button action="../aksi_logout.php"  class=" ml-5 px-2 py-1 w-23 bg-red-600 cursor-pointer text-white font-medium rounded-md hover:bg-red-400" type="submit">Logout</button>
         </form>
         <!-- Profile dropdown -->
         <div class="relative ml-3">

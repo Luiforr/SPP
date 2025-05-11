@@ -14,7 +14,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,52 +25,22 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 <body>
 
-<div class="flex justify-center items-center min-h-screen bg-blue-50 ">
-<form method="POST" class=" shadow-xl p-4 grid grid-cols-1 gap-2  w-full max-w-md space-y-6 rounded-2xl">
-<h2 class=" font-bold text-3xl text-center">Login User</h2>
+<div class="flex justify-center items-center min-h-screen ">
+<form method="POST" class=" shadow-xl p-10 grid grid-cols-1 gap-2  w-full max-w-md space-y-1 rounded-lg border-1 border-black">
+<h2 class=" font-bold text-4xl text-center mb-8">Login Admin</h2>
 <div>
     <label class="font-semibold ">Username</label>
-    <input type="text" name="username" required placeholder="username" class="w-full px-4 py-2 rounded-xl focus:outline-none focus:ring-2 outline-1 focus:ring-blue-400 bg-blue-50  placeholder-blue-500">
+    <input type="text" name="username" required placeholder="username" class="w-full h-12 px-4 py-2 rounded-xl focus:outline-none focus:ring-2 outline-1 focus:ring-[#2D5074] bg-[#D1CECA]  placeholder-[#123458]">
     </div>
 
     <div>
     <label class="font-semibold">Password</label>
-    <input type="password" name="password" required placeholder="password" class="w-full px-4 py-2 rounded-xl focus:outline-none focus:ring-2 outline-1 focus:ring-blue-400 bg-blue-50  placeholder-blue-500">
+    <input type="password" name="password" required placeholder="password" class="w-full h-12 px-4 py-2 rounded-xl focus:outline-none focus:ring-2 outline-1 focus:ring-[#2D5074] bg-[#D1CECA]  placeholder-[#123458]">
     </div>
 
-    <button class ="px-6 py-3 rounded-xl  bg-blue-600 text-white font-semibold transition hover:scale-110 hover:shadow-xl 
-    focus:ring-3 focus:outline-hidden cursor-pointer ml-10 w-78 " type="submit">Login</button>
+    <button class =" px-6 py-3 rounded-xl  bg-[#2D5074] text-white font-semibold transition hover:scale-110 hover:shadow-xl 
+    focus:ring-3 focus:outline-hidden cursor-pointer w-full mt-2" type="submit">Login</button>
 </form>
-</div>
-
-<div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 to-fuchsia-100 p-4">
-  <form class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md space-y-6">
-    <h2 class="text-3xl font-bold text-center text-purple-700">Form Ungu & Fuchsia</h2>
-
-
-    <div>
-      <label class="block text-purple-600 mb-1 font-medium">Fullname</label>
-      <input type="text" placeholder="Masukkan nama..."
-        class="w-full px-4 py-3 border border-purple-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-fuchsia-400 bg-purple-50 text-purple-800 placeholder-purple-400">
-    </div>
-
- 
-    <div>
-      <label class="block text-purple-600 mb-1 font-medium">Email</label>
-      <input type="email" placeholder="Masukkan email..."
-        class="w-full px-4 py-2 border border-purple-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-fuchsia-400 bg-purple-50 text-purple-800 placeholder-purple-400">
-    </div>
-
-
-
-
-    <div class="text-center">
-      <button type="submit"
-        class="bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white px-6 py-2 rounded-xl font-semibold hover:from-fuchsia-600 hover:to-purple-600 transition-all duration-300 w-full">
-        Kirim Form
-      </button>
-    </div>
-  </form>
 </div>
 </body>
 </html>

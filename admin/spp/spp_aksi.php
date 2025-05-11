@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/../database.php';
+include __DIR__ . '../../../database.php';
 
 
 function getAllData() {
@@ -17,28 +17,29 @@ function getSppById($id_spp) {
     $stmt = $conn->prepare($sql);
     $stmt->execute([$id_spp]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
-    header("Location: /admin/spp.php");
+    header("Location: /php-front/admin/spp/index.php");
     exit;
 
 }
 
-function createSpp( $tahun, $nominal) {
+function createSpp($tahun, $nominal) {
     $conn = getDatabaseConnection();
-    $sql = "INSERT INTO spp ( tahun, nominal, ) VALUES (?, ?)";
+    $sql = "INSERT INTO spp (tahun, nominal) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->execute([ $tahun, $nominal]);
-    header("Location: /admin/spp.php");
+    $stmt->execute([$tahun, $nominal]);
+    header("Location: /php-front/admin/spp/index.php");
     exit;
 }
 
-function updateSpp($id_spp, $tahun, $nominal) {
+function updateSpp( $id_spp, $tahun, $nominal) {
     $conn = getDatabaseConnection();
-    $sql = "UPDATE spp SET id_spp = ?, tahun = ?, nominal = ? WHERE id_spp = ?";
+    $sql = "UPDATE spp SET tahun = ?, nominal = ? WHERE id_spp = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->execute([$id_spp, $tahun, $nominal]);
-    header("Location: /admin/spp.php");
+    $stmt->execute([$tahun, $nominal, $id_spp]);
+    header("Location: /php-front/admin/spp/index.php");
     exit;
 }
+
 
 
 function deleteSpp($id_spp) {
@@ -46,7 +47,7 @@ function deleteSpp($id_spp) {
     $sql = "DELETE FROM spp WHERE id_spp = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$id_spp]);
-    header("Location: /admin/spp.php");
+    header("Location: /php-front/admin/spp/index.php");
     exit;
 }
 ?>
