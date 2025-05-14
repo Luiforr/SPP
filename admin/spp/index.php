@@ -51,24 +51,7 @@ if (isset($_GET['success'])) {
     <?php
     include '../../componen/navbar.php';
     ?>
-    <h1 class="text-2xl font-medium py-3 px-7">WELKAM ADMIN DASHBOARD</h1>
-    <h2 class="text-md font-medium text-cyan-700 px-15">Anda login sebagai Admin</h2>
-    <section class="flex justify-center mt-4">
-        <div class="grid grid-cols-3 gap-20">
-            <div class="bg-white text-black flex flex-col justify-center items-center rounded-md border py-6 px-10 shadow-md font-bold">
-                <p>Jumlah siswa</p>
-                <p>1</p>
-            </div>
-            <div class="bg-white text-black flex flex-col justify-center items-center rounded-md border py-6 px-10 shadow-md font-bold">
-                <p>Jumlah petugas</p>
-                <p>1</p>
-            </div>
-            <div class="bg-white text-black flex flex-col justify-center items-center rounded-md border py-6 px-10 shadow-md font-bold">
-                <p>Total pembayaran bulan ini</p>
-                <p>1</p>
-            </div>
-        </div>
-    </section>
+   
     <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
         <div class="flex justify-between mb-4 ">
             <h1 class="text-3xl font-bold mb-5">Daftar spp</h1>
@@ -80,13 +63,13 @@ if (isset($_GET['success'])) {
                 <?= $successMessage; ?>
             </div>
         <?php endif; ?>
-        <form action="" method="POST" class="mb-5 flex">
-            <div class="flex mb-3">
-                <input type="text" name="tahun" class="px-4 py-2 w-1/2 border rounded" placeholder="Tahun" required>
-                <input type="text" name="nominal" class="px-4 py-2 w-1/2 ml-2 border rounded" placeholder=" Nominal" required>
-                <button type="submit" name="create" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded ">Tambah SPP</button>
-            </div>
-        </form>
+        <form action="" method="POST" class="mb-5">
+                <div class="flex mb-3">
+                    <input type="text" name="tahun" class="px-4 py-2 w-1/2 border rounded" placeholder="Tahun" required>
+                    <input type="text" name="nominal" class="px-4 py-2 w-1/2 ml-2 border rounded" placeholder="nominal" required>
+                    <button type="submit" name="create" class="ml-2 px-4 text-sm bg-[#2D5074] text-white rounded ">Tambah SPP</button>
+                </div>
+            </form>
         <?php if (empty($sppData)): ?>
             <p>Tidak ada data spp ditemukan.</p>
         <?php else: ?>
@@ -106,7 +89,7 @@ if (isset($_GET['success'])) {
                             <td class="px-4 py-2"><?= htmlspecialchars($spp['tahun']); ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($spp['nominal']); ?></td>
                             <td class="px-4 py-2">
-                                <a href="edit.php?id=<?= $spp['id_spp']; ?>" class="text-blue-500 hover:underline">Edit</a>
+                                <a href="edit.php?id=<?= $spp['id_spp']; ?>" class="text-[#00FF33] hover:underline">Edit</a>
                                 <a href="index.php?delete=<?= $spp['id_spp']; ?>"
                                     onclick="return confirm('Yakin ingin menghapus data ini?')"
                                     class="text-[#FF0000] font-medium hover:underline">Delete</a>

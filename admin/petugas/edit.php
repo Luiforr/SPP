@@ -43,8 +43,8 @@ if (isset($_POST['update'])) {
             <input type="text" name="level" value="<?= htmlspecialchars($petugas['level']); ?>" class="w-full px-4 py-2 border rounded" required>
         </div>
         <div class="flex justify-end">
-            <a href="/php-front/admin/petugas/index.php" class="mr-3 px-4 py-2 bg-gray-300 rounded">Batal</a>
-            <button type="submit" name="update" class="px-4 py-2 bg-blue-600 text-white rounded"
+            <a href="/php-front/admin/petugas/index.php" class="mr-3 px-4 py-2 bg-red-600 rounded text-white">Batal</a>
+            <button type="submit" name="update" class="px-4 py-2 bg-green-600 text-white rounded"
             onclick="return confirm('Yakin ingin update data ini?')"
             >Update</button>
         </div>

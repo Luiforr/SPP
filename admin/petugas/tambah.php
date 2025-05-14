@@ -44,8 +44,8 @@ if (isset($_POST['create'])) {
         <label for="level" class="block text-md font-semibold ">Level</label>
         <input type=" text" name="level" id="level" class="w-full border rounded-md ">
       </div>
-      <div class=" flex justify-between">
-        <a href="/php-front/admin/petugas/index.php" type="button" class="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-blue-300">Kembali</a>
+      <div class=" flex gap-4">
+        <a href="/php-front/admin/petugas/index.php" type="button" class="bg-red-600 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-red-300">Kembali</a>
         <button type="submit" name="create" class="bg-green-500 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-green-300">Simpan</button>
       </div>
 </body>

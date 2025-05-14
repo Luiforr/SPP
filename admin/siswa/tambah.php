@@ -80,7 +80,7 @@ if (isset($_POST['create'])) {
       </div>
 
       <div class="flex justify-between">
-        <a href="../siswa/index.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400">Kembali</a>
+        <a href="../siswa/index.php" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-blue-400 text-white">Kembali</a>
         <button type="submit" name="create" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Simpan</button>
       </div>
     </form>

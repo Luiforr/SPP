@@ -1,18 +1,7 @@
 <?php
-
-function getIdPetugasByUsername($username) {
-  $conn = getDatabaseConnection();
-  $stmt = $conn->prepare("SELECT id_petugas FROM petugas WHERE username = ?");
-  $stmt->execute([$username]);
-
-  $data = $stmt->fetch(PDO::FETCH_ASSOC);
-  return $data ? $data['id_petugas'] : null;
-}
-
- 
-    // if ($_SESSION['status'] != "admin") {
-    //     header("location:/php-front/login/index.php?pesan=belum_login");
-    // }
+    if ($_SESSION['status'] != "login") {
+        header("location:/php-front/login/siswa.php?pesan=belum_login");
+    }
     ?>
 <nav class="bg-[#2D5074] sticky z-50 top-0">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -46,11 +35,8 @@ function getIdPetugasByUsername($username) {
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
       <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
-            <a href="/php-front/admin/spp/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">SPP</a>
-            <a href="/php-front/admin/petugas/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Petugas</a>
-            <a href="/php-front/admin/siswa/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Siswa</a>
-            <a href="/php-front/admin/kelas/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Kelas</a>
-            <a href="/php-front/admin/laporan/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Laporan</a>
+            <a href="/php-front/siswa/history/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">History</a>
+            <a href="/php-front/siswa/akun/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Account</a>
           </div>
         </div>
         <form action="/php-front/admin/aksi_logout.php">

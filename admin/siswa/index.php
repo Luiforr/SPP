@@ -43,25 +43,7 @@ if (isset($_GET['success'])) {
     include '../../componen/navbar.php';
     ?>
 
-    <h1 class="text-2xl font-medium py-3 px-7">WELKAM ADMIN DASHBOARD</h1>
-    <h2 class="text-md font-medium text-cyan-700 px-15">Anda login sebagai Admin</h2>
-
-    <section class="flex justify-center mt-4">
-        <div class="grid grid-cols-3 gap-20">
-            <div class="bg-white text-black flex flex-col justify-center items-center rounded-md border py-6 px-10 shadow-md font-bold">
-                <p>Jumlah siswa</p>
-                <p>1</p>
-            </div>
-            <div class="bg-white text-black flex flex-col justify-center items-center rounded-md border py-6 px-10 shadow-md font-bold">
-                <p>Jumlah petugas</p>
-                <p>1</p>
-            </div>
-            <div class="bg-white text-black flex flex-col justify-center items-center rounded-md border py-6 px-10 shadow-md font-bold">
-                <p>Total pembayaran bulan ini</p>
-                <p>1</p>
-            </div>
-        </div>
-    </section>
+   
 
 
     <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
@@ -74,7 +56,7 @@ if (isset($_GET['success'])) {
             </div>
         <?php endif; ?>
         <div class="flex justify-between">
-            <a href="/php-front/admin/siswa/tambah.php" type="button" class="mb-5 bg-blue-600 cursor-pointer rounded-md text-white px-4 py-2 hover:bg-blue-300">Tambah Siswa</a>
+            <a href="/php-front/admin/siswa/tambah.php" type="button" class="mb-5 bg-[#2D5074] cursor-pointer rounded-md text-white px-4 py-2 hover:bg-blue-300">Tambah Siswa</a>
         </div>
         <?php if (empty($siswaData)): ?>
             <p>Tidak ada data siswa ditemukan.</p>
@@ -104,7 +86,7 @@ if (isset($_GET['success'])) {
                                 <td class="px-4 py-2"><?= htmlspecialchars($siswa['nama_kelas']); ?></td>
                                 <td class="px-4 py-2"><?= htmlspecialchars($siswa['tahun']); ?></td>
                                 <td class="px-4 py-2">
-                                    <a href="edit.php?nisn=<?= $siswa['nisn']; ?>" class="text-blue-500 hover:underline">Edit</a>
+                                    <a href="edit.php?nisn=<?= $siswa['nisn']; ?>" class="text-[#00FF33] hover:underline">Edit</a>
                                     <a href="index.php?delete=<?= $siswa['nisn']; ?>"
                                         onclick="return confirm('Yakin ingin menghapus data ini?')"
                                         class="text-red-500 hover:underline">Delete</a>

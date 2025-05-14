@@ -1,15 +1,11 @@
 <?php
-include "laporan_aksi.php";
+include "aksi.php";
 session_start();
 
-$username = $_SESSION['username'];
+$nis = $_SESSION['nis'];
 
-if (isset($_GET['delete'])) {
-    deletePembayaran($_GET['delete']);
-    header("Location: siswa.php?success=delete");
-    exit;
-}
-$laporanData = getAllData();
+
+$siswaData = getData($nis);
 ?>
 
 <!DOCTYPE html>
@@ -25,21 +21,23 @@ $laporanData = getAllData();
 
 <body class="bg-gray-100">
     <?php
-    include '../../componen/navbar.php';
+    include '../componen/navsis.php';
     ?>
-    
+    <h1 class="text-2xl font-medium py-3 px-7">WELKAM ADMIN DASHBOARD</h1>
+    <h2 class="text-md font-medium text-cyan-700 px-15">Anda login sebagai Admin</h2>
     <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
         <div class="flex justify-between mb-4 ">
-            <h1 class="text-3xl font-bold mb-5">Data Laporan SPP</h1>
+            <h1 class="text-3xl font-bold mb-5">Data siswa SPP</h1>
+            <?= htmlspecialchars($nis) ?>
         </div>
         <form action="" method="POST" class="mb-5 flex">
-            <?php if (empty($laporanData)): ?>
+            <?php if (empty($siswaData)): ?>
                 <p>Tidak ada data siswa ditemukan.</p>
             <?php else: ?>
                 <table class="min-w-full table-auto border-collapse">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th class="px-4 py-2">Id</th>
+                            <th class="px-4 py-2">Nisn</th>
                             <th class="px-4 py-2">Petugas</th>
                             <th class="px-4 py-2">Nisn</th>
                             <th class="px-4 py-2">Tanggal Bayar</th>
@@ -55,19 +53,15 @@ $laporanData = getAllData();
                     <tbody>
                         <form action="aksi_logout.php" method="POST">
 
-                            <?php foreach ($laporanData as $laporan): ?>
+                         
                                 <tr class="border-t">
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['id_pembayaran']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['nama_petugas']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['nisn']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['tgl_bayar']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['bulan_dibayar']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun_dibayar']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['nominal']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['status']); ?></td>
+                                    <td class="px-4 py-2"><?= htmlspecialchars($siswaData['nisn']); ?></td>
+                                    <td class="px-4 py-2"><?= htmlspecialchars($siswaData['nis']); ?></td>
+                                    <td class="px-4 py-2"><?= htmlspecialchars($siswaData['nama']); ?></td>
+                                    <td class="px-4 py-2"><?= htmlspecialchars($siswaData['kelas']); ?></td>
+                                    
                                 </tr>
-                            <?php endforeach; ?>
+                       
                         </form>
                     </tbody>
                 </table>

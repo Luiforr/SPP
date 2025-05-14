@@ -46,10 +46,7 @@ if (isset($_GET['success'])) {
 <body class="bg-gray-100">
     <?php
     include "../../componen/navbar.php"
-    ?>
-    <h1 class="text-2xl font-medium py-3 px-7">WELKAM ADMIN DASHBOARD</h1>
-    <h2 class="text-md font-medium text-cyan-700 px-15">Anda login sebagai Admin</h2>
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
+    ?>  <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
         <div class="flex justify-between mb-4 ">
             <h1 class="text-3xl font-bold mb-5">Daftar Petugas</h1>
         </div>
@@ -59,7 +56,7 @@ if (isset($_GET['success'])) {
             </div>
         <?php endif; ?>
         <div class="flex justify-between">
-        <a href="/php-front/admin/petugas/tambah.php" type="button" class="mb-5 bg-blue-600 cursor-pointer rounded-md text-white px-4 py-2 hover:bg-blue-300">Tambah Petugas</a>
+        <a href="/php-front/admin/petugas/tambah.php" type="button" class="mb-5 bg-[#2D5074] rounded-md text-white px-4 py-2 hover:bg-blue-300">Tambah Petugas</a>
         </div>
             <?php if (empty($petugasData)): ?>
                 <p>Tidak ada data petugas ditemukan.</p>
@@ -81,7 +78,7 @@ if (isset($_GET['success'])) {
                                     <td class="px-4 py-2"><?= htmlspecialchars($petugas['username']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($petugas['nama_petugas']); ?></td>
                                     <td class="px-4 py-2">
-                                        <a href="edit.php?id_petugas=<?= $petugas['id_petugas']; ?>" class="text-blue-500 hover:underline">Edit</a>
+                                        <a href="edit.php?id_petugas=<?= $petugas['id_petugas']; ?>" class="text-[#00FF33] hover:underline">Edit</a>
                                         <a href="index.php?delete=<?= $petugas['id_petugas']; ?>"
                                             onclick="return confirm('Yakin ingin menghapus data ini?')"
                                             class="text-red-500 hover:underline">Delete</a>

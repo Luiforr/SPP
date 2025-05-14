@@ -62,30 +62,8 @@ if (isset($_GET['success'])) {
     <?php
     include '../../componen/navbar.php';
     ?>
-    <div class=" w-full py-5 bg-[#D9D9D9] mt-10 h-18">
-        <h2 class=" text-center font-medium text-black text-xl ">Selamat admin <?= htmlspecialchars($username) ?> di page Dashboard
-        </h2>
-    </div>
-    <section class="flex justify-center mt-4">
-        <div class="grid grid-cols-4 gap-10 mx-auto">
-            <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10   font-bold">
-                <p>1</p>
-                <p>siswa</p>
-            </div>
-            <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10  font-bold">
-                <p>1</p>
-                <p>petugas</p>
-            </div>
-            <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10  font-bold">
-                <p>1</p>
-                <p>pembayaran bulan ini</p>
-            </div>
-            <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10   font-bold">
-                <p>1</p>
-                <p>Kelas </p>
-            </div>
-        </div>
-    </section>
+
+ 
     <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
         <div class="flex justify-between mb-4 text-center">
 
@@ -148,7 +126,7 @@ if (isset($_GET['success'])) {
             </table>
 
         <?php endif; ?>
-    </div>
+
 
 </body>
 
