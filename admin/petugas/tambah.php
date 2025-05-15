@@ -1,9 +1,10 @@
 <?php
 include "petugas_aksi.php";
+
 session_start();
 
 if (isset($_POST['create'])) {
-  createPetugas( $_POST['username'], $_POST['nama_petugas'], $_POST['password'], $_POST['level']);
+  createPetugas($_POST['username'], $_POST['nama_petugas'], $_POST['password'], $_POST['level']);
   header("Location: petugas.php?success=create");
   exit;
 }
@@ -20,8 +21,9 @@ if (isset($_POST['create'])) {
   <link href="../output.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
-<?php
+  <?php
   include '../../componen/navbar.php';
   ?>
 
@@ -42,9 +44,12 @@ if (isset($_POST['create'])) {
       </div>
       <div>
         <label for="level" class="block text-md font-semibold ">Level</label>
-        <input type=" text" name="level" id="level" class="w-full border rounded-md ">
+        <select name="level" class="w-full border px-2 py-1 rounded-md" id="level" required>
+          <option value="admin">Admin</option>
+          <option value="petugas">Petugas</option>
+        </select>
       </div>
-      <div class=" flex gap-4">
+      <div class=" flex gap-4 justify-end">
         <a href="/php-front/admin/petugas/index.php" type="button" class="bg-red-600 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-red-300">Kembali</a>
         <button type="submit" name="create" class="bg-green-500 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-green-300">Simpan</button>
       </div>

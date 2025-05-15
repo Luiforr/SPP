@@ -3,7 +3,7 @@ include __DIR__ . '/../database.php';
 
 function getAllDataSpp() {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM spp ORDER BY id_spp LIMIT 5";
+    $sql = "SELECT * FROM spp ORDER BY id_spp desc LIMIT 5";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -11,7 +11,7 @@ function getAllDataSpp() {
 }
 function getAllDataKelas() {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM kelas ORDER BY id_kelas LIMIT 5";
+    $sql = "SELECT * FROM kelas ORDER BY id_kelas desc LIMIT 5";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -20,7 +20,7 @@ function getAllDataKelas() {
 
 function getAllDataSiswa() {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM siswa,kelas where siswa.id_kelas = kelas.id_kelas  ORDER BY nisn LIMIT 5";
+    $sql = "SELECT * FROM siswa,kelas where siswa.id_kelas = kelas.id_kelas  ORDER BY nisn desc LIMIT 5";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -29,7 +29,7 @@ function getAllDataSiswa() {
 
 function getAllDataPetugas() {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM petugas ORDER BY id_petugas LIMIT 5";
+    $sql = "SELECT * FROM petugas ORDER BY id_petugas desc LIMIT 5";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -38,7 +38,7 @@ function getAllDataPetugas() {
 
 function getAllDataPembayaran() {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM pembayaran,petugas,siswa,spp where pembayaran.id_petugas= petugas.id_petugas and pembayaran.nisn = siswa.nisn and pembayaran.id_spp = spp.id_spp ORDER BY id_pembayaran LIMIT 5";
+    $sql = "SELECT * FROM pembayaran,petugas,siswa,spp where pembayaran.id_petugas= petugas.id_petugas and pembayaran.nisn = siswa.nisn and pembayaran.id_spp = spp.id_spp ORDER BY id_pembayaran desc LIMIT 5";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

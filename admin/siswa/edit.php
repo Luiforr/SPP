@@ -1,6 +1,6 @@
 <?php
 include 'siswa_aksi.php';
-include '../../componen/navbar.php';
+include '../../componen/admin.php';
 if (!isset($_GET['nisn'])) {
     header('Location: ../index.php');
     exit;

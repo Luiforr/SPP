@@ -1,5 +1,6 @@
 <?php
 include 'siswa_aksi.php';
+
 session_start();
 
 if (isset($_POST['create'])) {
@@ -79,8 +80,8 @@ if (isset($_POST['create'])) {
         <input type="text" id="id_spp" name="id_spp" required class="w-full border px-2 py-1 rounded-md">
       </div>
 
-      <div class="flex justify-between">
-        <a href="../siswa/index.php" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-blue-400 text-white">Kembali</a>
+      <div class="flex justify-end">
+        <a href="../siswa/index.php" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-400 ">Kembali</a>
         <button type="submit" name="create" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Simpan</button>
       </div>
     </form>

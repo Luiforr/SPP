@@ -4,7 +4,7 @@ include __DIR__ . '../../../database.php';
 
 function getAllData() {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM petugas";
+    $sql = "SELECT * FROM petugas order by id_petugas desc";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

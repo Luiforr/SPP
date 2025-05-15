@@ -1,9 +1,3 @@
-<?php
-require_once 'utils.php';
-if (isset($_GET['go'])) {
-    navigate('/login', 1);
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">

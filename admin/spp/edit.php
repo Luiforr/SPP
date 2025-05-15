@@ -28,7 +28,7 @@ if (isset($_POST['update'])) {
 
 <body class="bg-gray-100">
     <?php
-    include '../../componen/navbar.php';
+    include '../../componen/admin.php';
     ?>
 <div class="container mx-auto my-5 p-5 bg-white rounded shadow-md">
     <h1 class="text-2xl font-bold mb-4">Edit Spp</h1>

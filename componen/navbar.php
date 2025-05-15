@@ -8,11 +8,9 @@ function getIdPetugasByUsername($username) {
   $data = $stmt->fetch(PDO::FETCH_ASSOC);
   return $data ? $data['id_petugas'] : null;
 }
-
- 
-    // if ($_SESSION['status'] != "admin") {
-    //     header("location:/php-front/login/index.php?pesan=belum_login");
-    // }
+    if ($_SESSION['status'] != "admin") {
+        header("location:/php-front/login/index.php?pesan=belum_login");
+    }
     ?>
 <nav class="bg-[#2D5074] sticky z-50 top-0">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

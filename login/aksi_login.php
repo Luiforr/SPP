@@ -12,10 +12,11 @@ function loginUser($username , $password )
     if($user && password_verify($password, $user['password'])){
         $_SESSION['username']= $user ['username'];
         $_SESSION['id_petugas']= $user ['id_petugas'];
-        $_SESSION['status']= "admin";
         if ($user ['level'] == 'admin') {
+            $_SESSION['status']= "admin";
             header("Location: /php-front/admin/dashboard.php");
         }else{
+            $_SESSION['status']= "petugas";
             header("Location: /php-front/petugas/dashboard.php");
         }
     }else{

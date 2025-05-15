@@ -12,10 +12,10 @@ include __DIR__ . '/../database.php';
 //     exit;
 // }
 
-function getData() {
+function getData($nis) {
     $nis = $_SESSION['nis'];
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM siswa where nis = $nis limit 1";
+    $sql = "SELECT * FROM siswa where nis = nis limit 1";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

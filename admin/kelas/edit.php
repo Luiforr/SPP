@@ -1,6 +1,7 @@
 <?php
 include 'aksi.php';
-include '../../componen/navbar.php';
+include '../../componen/admin.php';
+
 if (!isset($_GET['id'])) {
     header('Location: ../index.php');
     exit;
@@ -26,10 +27,12 @@ if (isset($_POST['update'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Edit Kelas</title>
-    <link href="../../output.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Edit</title>
+    <link href="../output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 
 <body class="bg-gray-100">
     <div class="container mx-auto my-5 p-5 bg-white rounded shadow-md">

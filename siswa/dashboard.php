@@ -29,6 +29,7 @@ $siswaData = getData($nis);
         <div class="flex justify-between mb-4 ">
             <h1 class="text-3xl font-bold mb-5">Data siswa SPP</h1>
             <?= htmlspecialchars($nis) ?>
+            <?= htmlspecialchars($nama) ?>
         </div>
         <form action="" method="POST" class="mb-5 flex">
             <?php if (empty($siswaData)): ?>
