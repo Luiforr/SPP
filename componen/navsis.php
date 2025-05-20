@@ -1,12 +1,13 @@
 <?php
-    function getIdPetugasByUsername($nis) {
-      $conn = getDatabaseConnection();
-      $stmt = $conn->prepare("SELECT * FROM siswa WHERE nis = ?");
-      $stmt->execute([$nis]);
+    // function getIdSiswaByNIS($nis) {
+    //   $conn = getDatabaseConnection();
+    //   $stmt = $conn->prepare("SELECT * FROM siswa WHERE nis = ?");
+    //   $stmt->execute([$nis]);
     
-      $data = $stmt->fetch(PDO::FETCH_ASSOC);
-      return $data ? $data['*'] : null;
-    }
+    //   $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    //   return $data ?: null;
+    // }
+    
     // if ($_SESSION['status'] != "login") {
     //     header("location:/php-front/login/siswa.php?pesan=belum_login");
     // }

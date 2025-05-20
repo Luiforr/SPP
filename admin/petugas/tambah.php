@@ -40,7 +40,7 @@ if (isset($_POST['create'])) {
       </div>
       <div>
         <label for="password" class="block text-md font-semibold ">Password</label>
-        <input type=" text" name="password" id="password" class="w-full border rounded-md ">
+        <input type=" password" name="password" id="password" class="w-full border rounded-md ">
       </div>
       <div>
         <label for="level" class="block text-md font-semibold ">Level</label>

@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
 
 <?php
@@ -41,29 +44,29 @@ $jumlahSiswa = countSiswa();
     <?php
     include '../componen/navgas.php';
     ?>
-    
+
     <section class="flex justify-center mt-4">
-    <div class="grid grid-cols-4 gap-10 mx-auto">
-        <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10   font-bold">
-            <p><?php
-echo countSiswa();
-            ?></p>
-            <p>siswa</p>
+        <div class="grid grid-cols-4 gap-10 mx-auto">
+            <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10   font-bold">
+                <p><?php
+                    echo countSiswa();
+                    ?></p>
+                <p>siswa</p>
+            </div>
+            <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10  font-bold">
+                <p>1</p>
+                <p>petugas</p>
+            </div>
+            <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10  font-bold">
+                <p>1</p>
+                <p>pembayaran bulan ini</p>
+            </div>
+            <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10   font-bold">
+                <p>1</p>
+                <p>Kelas </p>
+            </div>
         </div>
-        <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10  font-bold">
-            <p>1</p>
-            <p>petugas</p>
-        </div>
-        <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10  font-bold">
-            <p>1</p>
-            <p>pembayaran bulan ini</p>
-        </div>
-        <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10   font-bold">
-            <p>1</p>
-            <p>Kelas </p>
-        </div>
-    </div>
-</section>
+    </section>
     <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
         <div class="flex justify-between mb-4 ">
             <h1 class="text-3xl font-bold mb-5">Data Laporan SPP</h1>
@@ -86,7 +89,7 @@ echo countSiswa();
                             <th class="px-4 py-2">Jumlah</th>
                             <th class="px-4 py-2">Status</th>
 
-                            
+
                         </tr>
                     </thead>
                     <tbody>
