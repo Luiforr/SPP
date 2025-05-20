@@ -2,15 +2,33 @@
 include __DIR__ . '../../../database.php';
 
 
-function getAllData() {
+function getAllData($search = '', $limit = 10, $offset = 0) {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM petugas order by id_petugas desc";
+    $sql = "SELECT * FROM petugas
+            WHERE petugas.level LIKE :search OR petugas.nama_petugas LIKE :search
+            ORDER BY id_petugas DESC
+            LIMIT :limit OFFSET :offset";
+
     $stmt = $conn->prepare($sql);
+    $searchTerm = '%' . $search . '%';
+    $stmt->bindValue(':search', $searchTerm, PDO::PARAM_STR);
+    $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
     $stmt->execute();
+
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    exit;
 }
 
+function countAllData($search = '') {
+    $conn = getDatabaseConnection();
+    $sql = "SELECT COUNT(*) FROM petugas
+            WHERE petugas.id_petugas LIKE :search OR petugas.nama_petugas LIKE :search";
+    $stmt = $conn->prepare($sql);
+    $searchTerm = '%' . $search . '%';
+    $stmt->bindValue(':search', $searchTerm, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetchColumn();
+}
 function getPetugasById($id_petugas) {
     $conn = getDatabaseConnection();
     $sql = "SELECT * FROM petugas WHERE id_petugas = ?";

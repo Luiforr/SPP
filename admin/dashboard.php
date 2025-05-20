@@ -53,11 +53,17 @@ $pembayaranData = getAllDataPembayaran();
     <section class="flex justify-center mt-4">
         <div class="grid grid-cols-4 gap-10 mx-auto">
             <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10   font-bold">
-                <p>1</p>
+                <?php
+                echo countSiswa();
+                ?></p>
+                </p>
                 <p>siswa</p>
             </div>
             <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10  font-bold">
-                <p>1</p>
+                <?php
+                echo countPetugas();
+                ?></p>
+                </p>
                 <p>petugas</p>
             </div>
             <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10  font-bold">
@@ -65,7 +71,10 @@ $pembayaranData = getAllDataPembayaran();
                 <p>pembayaran bulan ini</p>
             </div>
             <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10   font-bold">
-                <p>1</p>
+                <?php
+                echo countKelas();
+                ?></p>
+                </p>
                 <p>Kelas </p>
             </div>
         </div>
@@ -178,7 +187,13 @@ $pembayaranData = getAllDataPembayaran();
                             <td class="px-4 py-2"><?= htmlspecialchars($pembayaran['tahun_dibayar']); ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($pembayaran['tahun']); ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($pembayaran['nominal']); ?></td>
-                            <td class="px-4 py-2"><?= htmlspecialchars($pembayaran['status']); ?></td>
+                            <td class="px-4 py-2"><?php
+                                                    if ($pembayaran['status'] == 'selesai') { ?>
+                                    <p class="text-green-500"> <?= htmlspecialchars($pembayaran['status']); ?></p>
+                                <?php } else { ?>
+                                    <p class="text-red-500"><?= htmlspecialchars($pembayaran['status']); ?> </p><?php
+                                                                                                            } ?>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -186,4 +201,5 @@ $pembayaranData = getAllDataPembayaran();
         <?php endif; ?>
     </div>
 </body>
+
 </html>

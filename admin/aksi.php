@@ -80,4 +80,33 @@ function deletePetugas($id_petugas) {
     header("Location: dashboard.php");
     exit;
 }
+
+function countSiswa() {
+    $conn = getDatabaseConnection();
+    $q = "SELECT COUNT(*) AS jumlah FROM siswa";
+    $stmt = $conn->prepare($q);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['jumlah'];
+}
+
+
+function countPetugas() {
+    $conn = getDatabaseConnection();
+    $q = "SELECT COUNT(*) AS jumlah FROM petugas";
+    $stmt = $conn->prepare($q);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['jumlah'];
+}
+
+function countKelas() {
+    $conn = getDatabaseConnection();
+    $q = "SELECT COUNT(*) AS jumlah FROM kelas";
+    $stmt = $conn->prepare($q);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['jumlah'];
+}
+
 ?>

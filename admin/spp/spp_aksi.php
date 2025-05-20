@@ -2,14 +2,34 @@
 include __DIR__ . '../../../database.php';
 
 
-function getAllData() {
+function getAllData($search = '', $limit = 10, $offset = 0) {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM spp order by id_spp desc";
+    $sql = "SELECT * FROM spp
+            WHERE spp.id_spp LIKE :search OR spp.tahun LIKE :search
+            ORDER BY tahun DESC
+            LIMIT :limit OFFSET :offset";
+
     $stmt = $conn->prepare($sql);
+    $searchTerm = '%' . $search . '%';
+    $stmt->bindValue(':search', $searchTerm, PDO::PARAM_STR);
+    $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
     $stmt->execute();
+
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    exit;
 }
+
+function countAllData($search = '') {
+    $conn = getDatabaseConnection();
+    $sql = "SELECT COUNT(*) FROM spp
+        WHERE spp.id_spp LIKE :search OR spp.tahun LIKE :search";
+    $stmt = $conn->prepare($sql);
+    $searchTerm = '%' . $search . '%';
+    $stmt->bindValue(':search', $searchTerm, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetchColumn();
+}
+
 
 function getSppById($id_spp) {
     $conn = getDatabaseConnection();

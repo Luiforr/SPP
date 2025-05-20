@@ -4,14 +4,36 @@ $conn = getDatabaseConnection();
 $stmt = $conn->query("SELECT nisn, nama FROM siswa");
 $siswaList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-function getAllData() {
+function getAllData($search = '', $limit = 10, $offset = 0) {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM pembayaran,petugas,siswa,spp where pembayaran.id_petugas= petugas.id_petugas and pembayaran.nisn = siswa.nisn and pembayaran.id_spp = spp.id_spp order by id_pembayaran desc";
+    $sql = "SELECT * FROM pembayaran
+            JOIN petugas ON pembayaran.id_petugas = petugas.id_petugas
+            JOIN siswa ON pembayaran.nisn = siswa.nisn
+            JOIN spp ON pembayaran.id_spp = spp.id_spp
+            WHERE siswa.nis LIKE :search OR siswa.nama LIKE :search
+            ORDER BY id_pembayaran DESC
+            LIMIT :limit OFFSET :offset";
+
     $stmt = $conn->prepare($sql);
+    $searchTerm = '%' . $search . '%';
+    $stmt->bindValue(':search', $searchTerm, PDO::PARAM_STR);
+    $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
     $stmt->execute();
+
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    exit;
+}
+
+function countAllData($search = '') {
+    $conn = getDatabaseConnection();
+    $sql = "SELECT COUNT(*) FROM pembayaran
+            JOIN siswa ON pembayaran.nisn = siswa.nisn
+            WHERE siswa.nis LIKE :search OR siswa.nama LIKE :search";
+    $stmt = $conn->prepare($sql);
+    $searchTerm = '%' . $search . '%';
+    $stmt->bindValue(':search', $searchTerm, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetchColumn();
 }
 
 function getTransaksiById($id_pembayaran) {

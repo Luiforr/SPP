@@ -2,14 +2,35 @@
 include __DIR__ . '../../../database.php';
 
 
-function getAllData() {
+function getAllData($search = '', $limit = 10, $offset = 0) {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM kelas order by id_kelas desc";
+    $sql = "SELECT * FROM kelas
+            WHERE kelas.kompetensi_keahlian LIKE :search OR kelas.nama_kelas LIKE :search
+            ORDER BY kompetensi_keahlian DESC
+            LIMIT :limit OFFSET :offset";
+
     $stmt = $conn->prepare($sql);
+    $searchTerm = '%' . $search . '%';
+    $stmt->bindValue(':search', $searchTerm, PDO::PARAM_STR);
+    $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
     $stmt->execute();
+
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    exit;
 }
+
+function countAllData($search = '') {
+    $conn = getDatabaseConnection();
+    $sql = "SELECT COUNT(*) FROM kelas
+        WHERE kelas.id_kelas LIKE :search OR kelas.nama_kelas LIKE :search";
+    $stmt = $conn->prepare($sql);
+    $searchTerm = '%' . $search . '%';
+    $stmt->bindValue(':search', $searchTerm, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetchColumn();
+}
+
+
 
 function getKelasById($id_kelas) {
     $conn = getDatabaseConnection();

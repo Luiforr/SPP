@@ -1,12 +1,11 @@
 <?php
 include 'siswa_aksi.php';
-include '../../componen/admin.php';
 if (!isset($_GET['nisn'])) {
-    header('Location: ../index.php');
+  header('Location: ../index.php');
     exit;
-}
+  }
 
-$nisn = $_GET['nisn'];
+  $nisn = $_GET['nisn'];
 $siswa = getSiswaById($nisn);
 
 if (!$siswa) {
@@ -31,7 +30,10 @@ if (isset($_POST['update'])) {
 
 </head>
 <body class="bg-gray-100">
-<div class="container mx-auto my-5 p-5 bg-white rounded shadow-md">
+  <?php
+  include '../../componen/admin.php';
+  ?>
+  <div class="container mx-auto my-5 p-5 bg-white rounded shadow-md">
     <h1 class="text-2xl font-bold mb-4">Edit Siswa</h1>
     <form action="" method="POST">
         <input type="hidden" name="nisn" value="<?= htmlspecialchars($nisn); ?>" />
@@ -44,12 +46,24 @@ if (isset($_POST['update'])) {
             <input type="text" name="nama" value="<?= htmlspecialchars($siswa['nama']); ?>" class="w-full px-4 py-2 border rounded" required>
         </div>
         <div class="mb-3">
-            <label class="block font-semibold">Kelas</label>
-            <input type="text" name="id_kelas" value="<?= htmlspecialchars($siswa['id_kelas']); ?>" class="w-full px-4 py-2 border rounded" required>
+          <select name="id_kelas" id="id_kelas" required class="w-full border px-2 py-1 rounded-md">
+          <option value="<?= $siswa['id_kelas']; ?>">-- <?= htmlspecialchars($siswa['nama_kelas']) ; ?> --</option>
+          <?php foreach ($kelasList as $kelas): ?>
+            <option value="<?= htmlspecialchars($kelas['id_kelas']) ?>">
+              <?= htmlspecialchars($kelas['nama_kelas']) ?> (<?= $kelas['id_kelas'] ?>)
+            </option>
+          <?php endforeach; ?>
+        </select>  
         </div>
         <div class="mb-3">
-            <label class="block font-semibold">Id SPP</label>
-            <input type="text" name="id_spp" value="<?= htmlspecialchars($siswa['id_spp']); ?>" class="w-full px-4 py-2 border rounded" required>
+        <select name="id_spp" id="id_spp" required class="w-full border px-2 py-1 rounded-md">
+          <option value="<?= $siswa['id_spp']; ?>">-- <?= htmlspecialchars($siswa['tahun']) ; ?> --</option>
+          <?php foreach ($sppList as $spp): ?>
+            <option value="<?= htmlspecialchars($spp['id_spp']) ?>">
+              <?= htmlspecialchars($spp['tahun']) ?> (<?= $spp['id_spp'] ?>)
+            </option>
+          <?php endforeach; ?>
+        </select>  
         </div>
         <div class="flex justify-end">
             <a href="../siswa/index.php" class="mr-3 px-4 py-2 bg-red-600 rounded text-white">Batal</a>

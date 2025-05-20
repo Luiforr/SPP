@@ -20,6 +20,8 @@ function loginUser($username , $password )
             header("Location: /php-front/petugas/dashboard.php");
         }
     }else{
+        $_SESSION['login']="gagal";
+        header("Location: /php-front/login/index.php?pesan=Gagal_Login");
         return "Gagal";
     }
 }
@@ -37,7 +39,10 @@ function loginSiswa($nis, $password )
         $_SESSION['status']= "login";
         header("Location: /php-front/siswa/dashboard.php");
     }else{
+        $_SESSION['login']="gagal";
+        header("Location: /php-front/login/siswa.php?pesan=Gagal_Login");
         return "Gagal";
+
     }
 }
 ?>

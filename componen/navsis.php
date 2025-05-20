@@ -1,16 +1,9 @@
 <?php
-    // function getIdSiswaByNIS($nis) {
-    //   $conn = getDatabaseConnection();
-    //   $stmt = $conn->prepare("SELECT * FROM siswa WHERE nis = ?");
-    //   $stmt->execute([$nis]);
+
     
-    //   $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    //   return $data ?: null;
-    // }
-    
-    // if ($_SESSION['status'] != "login") {
-    //     header("location:/php-front/login/siswa.php?pesan=belum_login");
-    // }
+    if ($_SESSION['status'] != "login") {
+        header("location:/php-front/login/siswa.php?pesan=belum_login");
+    }
     ?>
 <nav class="bg-[#2D5074] sticky z-50 top-0">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -36,7 +29,7 @@
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex shrink-0 items-center">
-          <a  href="/php-front/admin/dashboard.php" class="h-8 w-auto text-white text-2xl font-medium cursor-pointer">Logo</a>
+          <a  href="/php-front/siswa/dashboard.php" class="h-8 w-auto text-white text-2xl font-medium cursor-pointer">Logo</a>
         </div>
        
          
@@ -48,8 +41,8 @@
             <a href="/php-front/siswa/akun/index.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Account</a>
           </div>
         </div>
-        <form action="/php-front/admin/aksi_logout.php">
-    <button action="/php-front/admin/aksi_logout.php"  class=" ml-5 px-2 py-1 w-23 bg-red-600 cursor-pointer text-white font-medium rounded-md hover:bg-red-400" type="submit">Logout</button>
+        <form action="/php-front/siswa/aksi_logout.php">
+    <button action="/php-front/siswa/aksi_logout.php"  class=" ml-5 px-2 py-1 w-23 bg-red-600 cursor-pointer text-white font-medium rounded-md hover:bg-red-400" type="submit">Logout</button>
         </form>
         <!-- Profile dropdown -->
         <div class="relative ml-3">

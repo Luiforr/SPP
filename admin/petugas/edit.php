@@ -44,7 +44,7 @@ if (isset($_POST['update'])) {
                 <label class="block font-semibold">Level ( <?= htmlspecialchars($petugas['level']); ?> )</label>
                 <select name="level" class="w-full border px-2 py-1 rounded-md" id="level" required>
                     <option value="">
-                        --Edit Level--
+                        --Edit Level--  
                     <option value="admin">Admin</option>
                     <option value="petugas">Petugas</option>
                     </option>

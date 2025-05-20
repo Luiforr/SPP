@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body>
-    
-</body>
-</html>
-
 <?php
 include "aksi.php";
 session_start();
@@ -22,7 +9,15 @@ if (isset($_GET['delete'])) {
     header("Location: siswa.php?success=delete");
     exit;
 }
-$laporanData = getAllData();
+
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+$limit = 5;
+$offset = ($page - 1) * $limit;
+
+$laporanData = getAllData($search, $limit, $offset);
+$totalData = countAllData($search);
+$totalPages = ceil($totalData / $limit);
 ?>
 
 <!DOCTYPE html>
@@ -40,35 +35,19 @@ $laporanData = getAllData();
     <?php
     include '../../componen/navgas.php';
     ?>
-    
-    <section class="flex justify-center mt-4">
-    <div class="grid grid-cols-4 gap-10 mx-auto">
-        <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10   font-bold">
-            <p>1</p>
-            <p>siswa</p>
-        </div>
-        <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10  font-bold">
-            <p>1</p>
-            <p>petugas</p>
-        </div>
-        <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10  font-bold">
-            <p>1</p>
-            <p>pembayaran bulan ini</p>
-        </div>
-        <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10   font-bold">
-            <p>1</p>
-            <p>Kelas </p>
-        </div>
-    </div>
-</section>
+
+
     <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
-        <div class="flex justify-between mb-4 ">
-            <h1 class="text-3xl font-bold mb-5">Data Laporan SPP</h1>
-            <a href="/php-front/petugas/transaksi/index.php" type="button" class="mb-5 bg-green-600 rounded-md text-white px-4 py-2 hover:bg-green-300">Entry Transaksi</a>
+        <div class="flex justify-between  ">
+            <h1 class="text-3xl font-bold mb-5">History Pembayaran</h1>
         </div>
+        <form method="GET" action="" class="mb-4 flex gap-2">
+            <input type="text" name="search" placeholder="Cari NIS atau Nama" value="<?= htmlspecialchars($search) ?>" class="px-3 py-1 border rounded w-full">
+            <button type="submit" class="bg-[#2D5074] cursor-pointer text-white px-4 py-1 rounded w-38">Cari</button>
+        </form>
         <form action="" method="POST" class="mb-5 flex">
             <?php if (empty($laporanData)): ?>
-                <p>Tidak ada data siswa ditemukan.</p>
+                <p>Tidak ada data Pembayaran ditemukan.</p>
             <?php else: ?>
                 <table class="min-w-full table-auto border-collapse">
                     <thead>
@@ -90,14 +69,30 @@ $laporanData = getAllData();
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tgl_bayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['jumlah_bayar']); ?></td>
                                     <td class="px-4 py-2">
-                                <a href="detail.php?id_pembayaran=<?= $laporan['id_pembayaran']; ?>" class="text-[#00FF33] font-medium hover:underline">Detail</a>
-                            </td>
-                            <?php endforeach; ?>
+                                        <a href="detail.php?id_pembayaran=<?= $laporan['id_pembayaran']; ?>" class="text-[#00FF33] font-medium hover:underline">Detail</a>
+                                    </td>
+                                <?php endforeach; ?>
                         </form>
                     </tbody>
                 </table>
             <?php endif; ?>
     </div>
+    <div class="mt-5 flex justify-center space-x-2">
+        <?php if ($page > 1): ?>
+            <a href="?search=<?= urlencode($search) ?>&page=<?= $page - 1 ?>" class="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400"><</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <a href="?search=<?= urlencode($search) ?>&page=<?= $i ?>" class="px-3 py-1 rounded <?= $i == $page ? 'bg-[#2D5074] text-white' : 'bg-gray-200 hover:bg-gray-300' ?>">
+                <?= $i ?>
+            </a>
+        <?php endfor; ?>
+
+        <?php if ($page < $totalPages): ?>
+            <a href="?search=<?= urlencode($search) ?>&page=<?= $page + 1 ?>" class="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400">></a>
+        <?php endif; ?>
+    </div>
+
 </body>
 
 </html>

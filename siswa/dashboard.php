@@ -7,7 +7,7 @@ $siswaData = getIdSiswaByNIS($nis);
 $nisn = $siswaData['nisn'];
 
 $laporanData = getAllData($nisn);
-
+$hasil = getTotalPembayaranByStatus($nisn);
 
 
 ?>
@@ -27,18 +27,37 @@ $laporanData = getAllData($nisn);
     <?php
     include '../componen/navsis.php';
     ?>
-    <h1 class="text-2xl font-medium py-3 px-7">WELKAM ADMIN DASHBOARD</h1>
-    <h2 class="text-md font-medium text-cyan-700 px-15">Anda login sebagai Admin</h2>
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
-        <div class="flex justify-between mb-4 ">
-            <h1 class="text-3xl font-bold mb-5">Data siswa</h1>
-            <h1><?= htmlspecialchars($siswaData['nama']); ?></h1>
-            <h1><?= htmlspecialchars($siswaData['nama_kelas']); ?></h1>
-
+ <section class="flex justify-center mt-4">
+        <div class="grid grid-cols-2 gap-10 mx-auto">
+            <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10   font-bold">
+                <?php
+                 echo number_format($hasil['total_selesai'], 0, ',', '.')
+                ?></p>
+                </p>
+                <p>Total Pembayaran Selesai</p>
+            </div>
+            <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10  font-bold">
+                <?php
+                echo  number_format($hasil['total_belum'], 0, ',', '.')
+                ?></p>
+                </p>
+                <p>Total Pembayaran Belum Selesai</p>
+            </div>
         </div>
-        <form action="" method="POST" class="mb-5 flex">
+    </section>
+    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md ">
+        <div class="flex justify-between mb-4 ">
+            <div>
+            <h1 class="text-3xl font-bold mb-5">Data siswa</h1>
+            </div>
+            <div class="flex gap-2"> 
+                <h1 ><?= htmlspecialchars($siswaData['nama']); ?></h1>
+                <h1 class="font-semibold"><?= htmlspecialchars($siswaData['nama_kelas']); ?></h1>
+            </div>
+        </div>
+        <form action="" method="POST" class="mb-5 flex text-center">
             <?php if (empty($laporanData)): ?>
-                <p>Tidak ada data siswa ditemukan.</p>
+                <p>Anda belum mempunyai transaksi apapun</p>
             <?php else: ?>
                 <table class="min-w-full table-auto border-collapse">
                     <thead>
@@ -57,7 +76,7 @@ $laporanData = getAllData($nisn);
                         </tr>
                     </thead>
                     <tbody>
-                        <form action="aksi_logout.php" method="POST">
+                        <form action="" method="POST">
 
                             <?php foreach ($laporanData as $laporan): ?>
                                 <tr class="border-t">
@@ -69,7 +88,12 @@ $laporanData = getAllData($nisn);
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun_dibayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['jumlah_bayar']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['status']); ?></td>
+                                    <td class="px-4 py-2"><?php
+                                    if($laporan['status'] == 'selesai'){?>
+                                        <p class="text-green-500"> <?= htmlspecialchars($laporan['status']); ?></p>
+                                        <?php }else{?>
+                                        <p  class="text-red-500"><?= htmlspecialchars($laporan['status']); ?> </p><?php
+                                    }?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </form>

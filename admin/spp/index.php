@@ -20,7 +20,14 @@ if (isset($_GET['delete'])) {
 
 $id_spp = $_GET['edit'] ?? null;
 
-$sppData = getAllData();
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+$limit = 5;
+$offset = ($page - 1) * $limit;
+
+$sppData = getAllData($search, $limit, $offset);
+$totalData = countAllData($search);
+$totalPages = ceil($totalData / $limit);
 
 if (isset($_GET['success'])) {
     switch ($_GET['success']) {
@@ -56,6 +63,10 @@ if (isset($_GET['success'])) {
     <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
         <div class="flex justify-between mb-4 ">
             <h1 class="text-3xl font-bold mb-5">Daftar spp</h1>
+            <form method="GET" action="" class="mb-4 flex gap-2">
+                <input type="text" name="search" placeholder="Cari Tahun" value="<?= htmlspecialchars($search) ?>" class="px-3 py-1 border rounded w-full">
+                <button type="submit" class="bg-[#2D5074] text-white px-4 py-1 rounded w-38 font-semibold cursor-pointer hover:bg-slate-300">Cari</button>
+            </form>
         </div>
 
         <!-- ✅ ALERT -->
@@ -68,7 +79,7 @@ if (isset($_GET['success'])) {
                 <div class="flex mb-3">
                     <input type="text" name="tahun" class="px-4 py-2 w-1/2 border rounded" placeholder="Tahun" required>
                     <input type="text" name="nominal" class="px-4 py-2 w-1/2 ml-2 border rounded" placeholder="nominal" required>
-                    <button type="submit" name="create" class="ml-2 px-4 text-sm bg-[#2D5074] text-white rounded ">Tambah SPP</button>
+                    <button type="submit" name="create" class="  ml-2 px-4 text-sm bg-[#2D5074] text-white rounded cursor-pointer">+ </button>
                 </div>
             </form>
         <?php if (empty($sppData)): ?>
@@ -99,6 +110,21 @@ if (isset($_GET['success'])) {
                     <?php endforeach; ?>
                 </tbody>
             </table>
+        <?php endif; ?>
+    </div>
+    <div class="mt-5 flex justify-center space-x-2">
+        <?php if ($page > 1): ?>
+            <a href="?search=<?= urlencode($search) ?>&page=<?= $page - 1 ?>" class="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400"><</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <a href="?search=<?= urlencode($search) ?>&page=<?= $i ?>" class="px-3 py-1 rounded <?= $i == $page ? 'bg-[#2D5074] text-white' : 'bg-gray-200 hover:bg-gray-300' ?>">
+                <?= $i ?>
+            </a>
+        <?php endfor; ?>
+
+        <?php if ($page < $totalPages): ?>
+            <a href="?search=<?= urlencode($search) ?>&page=<?= $page + 1 ?>" class="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400">></a>
         <?php endif; ?>
     </div>
 </body>

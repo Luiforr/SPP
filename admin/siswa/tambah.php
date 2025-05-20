@@ -67,8 +67,14 @@ if (isset($_POST['create'])) {
       </div>
 
       <div>
-        <label for="id_kelas" class="block font-semibold">Kelas</label>
-        <input type="text" id="id_kelas" name="id_kelas" required class="w-full border px-2 py-1 rounded-md">
+        <select name="id_kelas" id="id_kelas" required class="w-full border px-2 py-1 rounded-md">
+          <option value="">-- Pilih Kelas --</option>
+          <?php foreach ($kelasList as $kelas): ?>
+            <option value="<?= htmlspecialchars($kelas['id_kelas']) ?>">
+              <?= htmlspecialchars($kelas['nama_kelas']) ?> (<?= $kelas['id_kelas'] ?>)
+            </option>
+          <?php endforeach; ?>
+        </select>
       </div>
 
       <div>
@@ -76,11 +82,17 @@ if (isset($_POST['create'])) {
         <input type="password" id="password" name="password" required class="w-full border px-2 py-1 rounded-md">
       </div>
       <div>
-        <label for="id_spp" class="block font-semibold">ID SPP</label>
-        <input type="text" id="id_spp" name="id_spp" required class="w-full border px-2 py-1 rounded-md">
+      <select name="id_spp" id="id_spp" required class="w-full border px-2 py-1 rounded-md">
+          <option value="">-- Pilih SPP --</option>
+          <?php foreach ($sppList as $spp): ?>
+            <option value="<?= htmlspecialchars($spp['id_spp']) ?>">
+              <?= htmlspecialchars($spp['tahun']) ?> (<?= $spp['id_spp'] ?>)
+            </option>
+          <?php endforeach; ?>
+        </select>
       </div>
 
-      <div class="flex justify-end">
+      <div class="flex justify-end gap-2">
         <a href="../siswa/index.php" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-400 ">Kembali</a>
         <button type="submit" name="create" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Simpan</button>
       </div>

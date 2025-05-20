@@ -105,7 +105,13 @@ $jumlahSiswa = countSiswa();
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun_dibayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['jumlah_bayar']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['status']); ?></td>
+                                    <td class="px-4 py-2"><?php
+                                                            if ($laporan['status'] == 'selesai') { ?>
+                                            <p class="text-green-500"> <?= htmlspecialchars($laporan['status']); ?></p>
+                                        <?php } else { ?>
+                                            <p class="text-red-500"><?= htmlspecialchars($laporan['status']); ?> </p><?php
+                                                                                                                    } ?>
+                                    </td>   
                                 </tr>
                             <?php endforeach; ?>
                         </form>
