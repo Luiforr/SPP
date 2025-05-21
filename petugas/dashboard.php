@@ -27,6 +27,8 @@ if (isset($_GET['delete'])) {
 }
 $laporanData = getAllData();
 $jumlahSiswa = countSiswa();
+$totalBayarBulanIni = sumPembayaranBulanIni();
+
 ?>
 
 <!DOCTYPE html>
@@ -54,20 +56,32 @@ $jumlahSiswa = countSiswa();
                 <p>siswa</p>
             </div>
             <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10  font-bold">
-                <p>1</p>
+                <p>
+                <?php
+                    echo countPetugas();
+                    ?></p>
+                </p>
                 <p>petugas</p>
             </div>
             <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10  font-bold">
-                <p>1</p>
+                <p>
+                <?php
+                       echo number_format($totalBayarBulanIni, 0, ',', '.');
+                    ?>
+                </p>
                 <p>pembayaran bulan ini</p>
             </div>
             <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10   font-bold">
-                <p>1</p>
+                <p>
+                <?php
+                    echo countKelas();
+                    ?></p>
+                </p>
                 <p>Kelas </p>
             </div>
         </div>
     </section>
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
+    <div class="container mx-auto  my-5 p-5  text-center">
         <div class="flex justify-between mb-4 ">
             <h1 class="text-3xl font-bold mb-5">Data Laporan SPP</h1>
             <a href="/php-front/petugas/transaksi/index.php" type="button" class="mb-5 bg-green-600 rounded-md text-white px-4 py-2 hover:bg-green-300">Entry Transaksi</a>
@@ -76,7 +90,7 @@ $jumlahSiswa = countSiswa();
             <?php if (empty($laporanData)): ?>
                 <p>Tidak ada data siswa ditemukan.</p>
             <?php else: ?>
-                <table class="min-w-full table-auto border-collapse">
+                <table class="min-w-full table-auto border-collapse bg-white shadow-md">
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="px-4 py-2">Id</th>
@@ -104,7 +118,7 @@ $jumlahSiswa = countSiswa();
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['bulan_dibayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun_dibayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['jumlah_bayar']); ?></td>
+                                    <td class="px-4 py-2"><?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></td>
                                     <td class="px-4 py-2"><?php
                                                             if ($laporan['status'] == 'selesai') { ?>
                                             <p class="text-green-500"> <?= htmlspecialchars($laporan['status']); ?></p>

@@ -56,7 +56,8 @@ $totalPages = ceil($totalData / $limit);
 <body class="bg-gray-100">
     <?php
     include "../../componen/navbar.php"
-    ?>  <div class="container mx-auto  my-5 p-5  rounded shadow-md text-center">
+    ?>  
+    <div class="container mx-auto  my-5 p-5  rounded  text-center">
         <div class="flex justify-between mb-4 ">
             <h1 class="text-3xl font-bold mb-5">Daftar Petugas</h1>
         </div>
@@ -75,7 +76,7 @@ $totalPages = ceil($totalData / $limit);
             <?php if (empty($petugasData)): ?>
                 <p>Tidak ada data petugas ditemukan.</p>
             <?php else: ?>
-                <table class="min-w-full table-auto border-collapse">
+                <table class="min-w-full table-auto border-collapse shadow-md bg-white">
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="px-4 py-2">ID Petugas</th>

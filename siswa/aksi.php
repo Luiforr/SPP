@@ -72,7 +72,9 @@ function getLaporanByNisn($nisn) {
 
 function getAllData($nisn) {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM pembayaran,petugas,siswa,spp where pembayaran.id_petugas= petugas.id_petugas and pembayaran.nisn = siswa.nisn and pembayaran.id_spp = spp.id_spp and pembayaran.nisn = ? order by id_pembayaran desc limit 5";
+    $sql = "SELECT * FROM pembayaran,petugas,siswa,spp 
+    where pembayaran.id_petugas= petugas.id_petugas and pembayaran.nisn = siswa.nisn and pembayaran.id_spp = spp.id_spp and pembayaran.nisn = ?  
+    ORDER BY pembayaran.tgl_bayar DESC limit 5";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$nisn]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

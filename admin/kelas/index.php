@@ -66,16 +66,16 @@ if (isset($_GET['success'])) {
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="">
+<body class="bg-gray-100">
     <?php
     include '../../componen/navbar.php';
     ?>
 
  
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
+    <div class="container mx-auto  my-5 p-5   text-center">
         <div class="flex justify-between mb-4 text-center">
 
-            <h1 class="text-3xl  mb-5 text-center">Daftar Kelas</h1>
+            <h1 class="text-3xl  mb-5 text-center font-bold">Daftar Kelas</h1>
             <form method="GET" action="" class="mb-4 flex gap-2">
                 <input type="text" name="search" placeholder="Kompetensi atau nama kelas" value="<?= htmlspecialchars($search) ?>" class="px-3 py-1 border rounded w-full">
                 <button type="submit" class="bg-[#2D5074] text-white px-4 py-1 rounded w-38 font-semibold cursor-pointer hover:bg-slate-300">Cari</button>
@@ -102,7 +102,7 @@ if (isset($_GET['success'])) {
                 <div class="flex mb-3">
                     <input type="text" name="nama_kelas" class="px-4 py-2 w-1/2 border rounded" placeholder="Nama Kelas" required>
                     <input type="text" name="kompetensi_keahlian" class="px-4 py-2 w-1/2 ml-2 border rounded" placeholder="Kompetensi Keahlian" required>
-                    <button type="submit" name="create" class="ml-2 px-4 text-sm bg-[#2D5074] text-white rounded font-bold cursor-pointer">+</button>
+                    <button type="submit" name="create" class="ml-2 px-4 text-sm bg-green-500 text-white rounded font-bold cursor-pointer w-30 hover:bg-green-300">+ Kelas</button>
                 </div>
             </form>
         <?php endif; ?>
@@ -110,7 +110,7 @@ if (isset($_GET['success'])) {
         <?php if (empty($kelasData)): ?>
             <p>Tidak ada data kelas ditemukan.</p>
         <?php else: ?>
-            <table class="min-w-full table-auto border-collapse">
+            <table class="min-w-full table-auto border-collapse shadow-md bg-white">
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="px-4 py-2">ID Kelas</th>

@@ -35,7 +35,6 @@ function getPembayaranByTanggal($bulan = null, $limit = 5, $offset = 0)
 
 function countPagePembayaran($bulan = null) {
     $conn = getDatabaseConnection();
-
     if ($bulan) {
         $sql = "SELECT COUNT(*) FROM pembayaran 
                 WHERE DATE_FORMAT(tgl_bayar, '%Y-%m') = ?";

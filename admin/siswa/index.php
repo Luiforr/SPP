@@ -69,7 +69,7 @@ $totalPages = ceil($totalData / $limit);
                 <input type="text" name="search" placeholder="Cari NIS atau Nama" value="<?= htmlspecialchars($search) ?>" class="px-3 py-1 border rounded w-full">
                 <button type="submit" class="bg-[#2D5074] text-white px-4 py-1 rounded w-38 font-semibold cursor-pointer hover:bg-slate-300">Cari</button>
             </form>
-            <a href="/php-front/admin/siswa/tambah.php" type="button" class="mb-5 bg-green-500 cursor-pointer rounded-md font-semibold text-white px-4 py-2 hover:bg-blue-300">+ Siswa</a>
+            <a href="/php-front/admin/siswa/tambah.php" type="button" class="mb-5 bg-green-500 cursor-pointer rounded-md font-semibold text-white px-4 py-2 hover:bg-green-300">+ Siswa</a>
         </div>
         <?php if (empty($siswaData)): ?>
             <p>Tidak ada data siswa ditemukan.</p>

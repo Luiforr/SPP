@@ -11,7 +11,7 @@ function getAllData($search = '', $limit = 10, $offset = 0) {
             JOIN siswa ON pembayaran.nisn = siswa.nisn
             JOIN spp ON pembayaran.id_spp = spp.id_spp
             WHERE siswa.nis LIKE :search OR siswa.nama LIKE :search
-            ORDER BY id_pembayaran DESC
+            ORDER BY pembayaran.tgl_bayar DESC
             LIMIT :limit OFFSET :offset";
 
     $stmt = $conn->prepare($sql);

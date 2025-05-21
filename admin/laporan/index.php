@@ -36,13 +36,13 @@ $totalPages = ceil($totalData / $limit);
     include '../../componen/navbar.php';
     ?>
     <h1 class="text-3xl font-bold mb-5 text-center mt-5">Laporan Pembayaran</h1>
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md ">
+    <div class="container mx-auto  my-1 p-5 rounded ">
 
         <form method="GET" action="">
             <label for="tanggal">Cari Pembayaran :</label>
             <div class="flex">
-                <input type="month" class="w-full px-2 py-1 rounded-md border" name="bulan" id="bulan" value="<?php echo isset($_GET['bulan']) ? $_GET['bulan'] : ''; ?>" required>
-                <button type="submit" name="" class="ml-2 px-4 text-sm bg-[#2D5074] text-white rounded ">Filter</button>
+                <input type="month" class="w-full px-2 py-1 rounded-md border" name="bulan" id="bulan" value="<?php echo isset($_GET['bulan']) ? $_GET['bulan'] : ''; ?>" >
+                <button type="submit" name="" class="ml-2 px-4 text-sm bg-[#2D5074] text-white rounded cursor-pointer hover:bg-gray-500">Filter</button>
             </div>
         </form>
 
@@ -51,8 +51,8 @@ $totalPages = ceil($totalData / $limit);
                 <p class="text-center mt-5 font-semibold">Anda belum mempunyai transaksi apapun</p>
             <?php else: ?>
         </div>
-        <form action="" method="POST" class="mb-5 flex text-center">
-            <table class="min-w-full table-auto border-collapse mt-5">
+        <form action="" method="POST" class=" flex text-center">
+            <table class="min-w-full table-auto border-collapse mt-5 shadow-md bg-white">
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="px-4 py-2">NO</th>
@@ -74,7 +74,7 @@ $totalPages = ceil($totalData / $limit);
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['nis']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['nama']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tgl_bayar']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['jumlah_bayar']); ?></td>
+                                    <td class="px-4 py-2"><?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></td>
                                     <td class="px-4 py-2"><?php
                                                             if ($laporan['status'] == 'selesai') { ?>
                                             <p class="text-green-500"> <?= htmlspecialchars($laporan['status']); ?></p>
@@ -92,7 +92,7 @@ $totalPages = ceil($totalData / $limit);
             </table>
         </form>
     </div>
-        <div class="mt-5 flex justify-center space-x-2">
+        <div class=" flex justify-center space-x-2">
             <?php
             if ($page > 1): ?>
                 <a href="?bulan=<?= urlencode($bulan) ?>&page=<?= $page - 1 ?>" class="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400"><</a>

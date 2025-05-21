@@ -60,7 +60,7 @@ if (isset($_GET['delete'])) {
         <h1>ID SPP</h1>
         <h1><?= htmlspecialchars($laporan['id_spp']); ?></h1>
         <h1>Jumlah Bayar</h1>
-        <h1><?= htmlspecialchars($laporan['jumlah_bayar']); ?></h1>
+        <h1 class="px-4 py-2"><?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></h1>
         <h1>Status</h1>
         <h1><?= htmlspecialchars($laporan['status']); ?></h1>
         <td class="px-4 py-2">

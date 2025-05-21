@@ -35,7 +35,7 @@ $totalPages = ceil($totalData / $limit);
     include '../../componen/navsis.php';
     ?>
     <h1 class="text-3xl font-bold mb-5 text-center">History Pembayaran</h1>
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md ">
+    <div class="container mx-auto  my-5 p-5  ">
         <?php
         if ($bulan) {
         } else {?>
@@ -57,7 +57,7 @@ $totalPages = ceil($totalData / $limit);
             <?php else: ?>
         </div>
         <form action="" method="POST" class="mb-5 flex text-center">
-            <table class="min-w-full table-auto border-collapse mt-5">
+            <table class="min-w-full table-auto border-collapse mt-5 bg-white shadow-md">
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="px-4 py-2">NO</th>
@@ -75,7 +75,7 @@ $totalPages = ceil($totalData / $limit);
                                 <tr class="border-t">
                                     <td class="px-4 py-2"><?= $no++ ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tgl_bayar']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['jumlah_bayar']); ?></td>
+                                    <td class="px-4 py-2"><?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></td>
                                     <td class="px-4 py-2"><?php
                                     if($laporan['status'] == 'selesai'){?>
                                         <p class="text-green-500"> <?= htmlspecialchars($laporan['status']); ?></p>

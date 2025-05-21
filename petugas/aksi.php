@@ -4,7 +4,9 @@ include __DIR__ . '/../database.php';
 
 function getAllData() {
     $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM pembayaran,petugas,siswa,spp where pembayaran.id_petugas= petugas.id_petugas and pembayaran.nisn = siswa.nisn and pembayaran.id_spp = spp.id_spp order by id_pembayaran desc limit 5";
+    $sql = "SELECT * FROM pembayaran,petugas,siswa,spp 
+    where pembayaran.id_petugas= petugas.id_petugas and pembayaran.nisn = siswa.nisn and pembayaran.id_spp = spp.id_spp 
+     ORDER BY pembayaran.tgl_bayar DESC limit 5";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -40,6 +42,38 @@ function deletePembayaran($id_pembayaran) {
     $stmt->execute([$id_pembayaran]);
     header("Location: /admin/laporan/index.php");
     exit;
+}
+
+function sumPembayaranBulanIni() {
+    $conn = getDatabaseConnection();
+    $bulan = date('m');
+    $tahun = date('Y');
+
+    $sql = "SELECT SUM(jumlah_bayar) AS total FROM pembayaran 
+            WHERE MONTH(tgl_bayar) = ? AND YEAR(tgl_bayar) = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$bulan, $tahun]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return $result['total'] ?? 0; // jika null, kembalikan 0
+}
+
+function countPetugas() {
+    $conn = getDatabaseConnection();
+    $q = "SELECT COUNT(*) AS jumlah FROM petugas";
+    $stmt = $conn->prepare($q);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['jumlah'];
+}
+
+function countKelas() {
+    $conn = getDatabaseConnection();
+    $q = "SELECT COUNT(*) AS jumlah FROM kelas";
+    $stmt = $conn->prepare($q);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['jumlah'];
 }
 ?>
  

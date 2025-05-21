@@ -37,7 +37,7 @@ $totalPages = ceil($totalData / $limit);
     ?>
 
 
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
+    <div class="container mx-auto  my-5 p-5 text-center">
         <div class="flex justify-between  ">
             <h1 class="text-3xl font-bold mb-5">History Pembayaran</h1>
         </div>
@@ -49,13 +49,14 @@ $totalPages = ceil($totalData / $limit);
             <?php if (empty($laporanData)): ?>
                 <p>Tidak ada data Pembayaran ditemukan.</p>
             <?php else: ?>
-                <table class="min-w-full table-auto border-collapse">
+                <table class="min-w-full table-auto border-collapse  bg-white rounded shadow-md">
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="px-4 py-2">NIS</th>
                             <th class="px-4 py-2">Nama</th>
                             <th class="px-4 py-2">Tanggal Bayar</th>
                             <th class="px-4 py-2">Nominal</th>
+                            <th class="px-4 py-2">Status</th>
                             <th class="px-4 py-2">Aksi</th>
                         </tr>
                     </thead>
@@ -67,7 +68,14 @@ $totalPages = ceil($totalData / $limit);
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['nis']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['nama']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tgl_bayar']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['jumlah_bayar']); ?></td>
+                                    <td class="px-4 py-2"><?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></td>
+                                    <td class="px-4 py-2"><?php
+                                                            if ($laporan['status'] == 'selesai') { ?>
+                                            <p class="text-green-500"> <?= htmlspecialchars($laporan['status']); ?></p>
+                                        <?php } else { ?>
+                                            <p class="text-red-500"><?= htmlspecialchars($laporan['status']); ?> </p><?php
+                                                                                                                    } ?>
+                                    </td>
                                     <td class="px-4 py-2">
                                         <a href="detail.php?id_pembayaran=<?= $laporan['id_pembayaran']; ?>" class="text-[#00FF33] font-medium hover:underline">Detail</a>
                                     </td>

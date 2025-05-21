@@ -45,7 +45,7 @@ $hasil = getTotalPembayaranByStatus($nisn);
             </div>
         </div>
     </section>
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md ">
+    <div class="container mx-auto  my-5 p-5">
         <div class="flex justify-between mb-4 ">
             <div>
             <h1 class="text-3xl font-bold mb-5">Data siswa</h1>
@@ -59,7 +59,7 @@ $hasil = getTotalPembayaranByStatus($nisn);
             <?php if (empty($laporanData)): ?>
                 <p>Anda belum mempunyai transaksi apapun</p>
             <?php else: ?>
-                <table class="min-w-full table-auto border-collapse">
+                <table class="min-w-full table-auto border-collapse shadow-md bg-white">
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="px-4 py-2">Id</th>
@@ -87,7 +87,7 @@ $hasil = getTotalPembayaranByStatus($nisn);
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['bulan_dibayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun_dibayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['jumlah_bayar']); ?></td>
+                                    <td class="px-4 py-2"><?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></td>
                                     <td class="px-4 py-2"><?php
                                     if($laporan['status'] == 'selesai'){?>
                                         <p class="text-green-500"> <?= htmlspecialchars($laporan['status']); ?></p>

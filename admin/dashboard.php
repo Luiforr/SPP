@@ -28,6 +28,7 @@ $siswaData = getAllDataSiswa();
 $sppData = getAllDataSpp();
 $petugasData = getAllDataPetugas();
 $pembayaranData = getAllDataPembayaran();
+$totalBayarBulanIni = sumPembayaranBulanIni();
 
 
 ?>
@@ -42,11 +43,11 @@ $pembayaranData = getAllDataPembayaran();
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="">
+<body class="bg-gray-100">
     <?php
     include '../componen/navbar.php';
     ?>
-    <div class=" w-full py-5 bg-[#D9D9D9] mt-10 h-18">
+    <div class=" w-full py-5  mt-10 h-18">
         <h2 class=" text-center font-medium text-black text-xl ">Selamat admin <?= htmlspecialchars($username) ?> di page Dashboard
         </h2>
     </div>
@@ -67,7 +68,11 @@ $pembayaranData = getAllDataPembayaran();
                 <p>petugas</p>
             </div>
             <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10  font-bold">
-                <p>1</p>
+                <p>
+                    <?php
+                       echo number_format($totalBayarBulanIni, 0, ',', '.');
+                    ?>
+                </p>
                 <p>pembayaran bulan ini</p>
             </div>
             <div class=" text-black flex flex-col justify-center items-center rounded-md py-6 px-10   font-bold">
@@ -79,14 +84,14 @@ $pembayaranData = getAllDataPembayaran();
             </div>
         </div>
     </section>
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
+    <div class="container mx-auto  my-5 p-5 text-center">
         <div class="flex justify-between mb-4 text-center">
-            <a href="petugas/index.php" class="text-3xl cursor-pointer mb-5 text-center">Daftar Petugas</a>
+            <a href="petugas/index.php" class="text-3xl cursor-pointer mb-5 text-center font-semibold hover:text-gray-400">Daftar Petugas</a>
         </div>
         <?php if (empty($petugasData)): ?>
             <p>Tidak ada data Petugas ditemukan.</p>
         <?php else: ?>
-            <table class="min-w-full table-auto border-collapse">
+            <table class="min-w-full table-auto border-collapse bg-white shadow-md">
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="px-4 py-2">ID</th>
@@ -115,14 +120,14 @@ $pembayaranData = getAllDataPembayaran();
             </table>
         <?php endif; ?>
     </div>
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
+    <div class="container mx-auto  my-5 p-5  text-center">
         <div class="flex justify-between mb-4 text-center">
-            <a href="siswa/index.php" class="text-3xl cursor-pointer mb-5 text-center">Daftar Siswa</a>
+            <a href="siswa/index.php" class="text-3xl cursor-pointer mb-5 text-center font-semibold hover:text-gray-400">Daftar Siswa</a>
         </div>
         <?php if (empty($siswaData)): ?>
             <p>Tidak ada data Siswa ditemukan.</p>
         <?php else: ?>
-            <table class="min-w-full table-auto border-collapse">
+            <table class="min-w-full table-auto border-collapse bg-white shadow-md">
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="px-4 py-2">NISN</th>
@@ -155,14 +160,14 @@ $pembayaranData = getAllDataPembayaran();
             </table>
         <?php endif; ?>
     </div>
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
+    <div class="container mx-auto  my-5 p-5  text-center">
         <div class="flex justify-between mb-4 text-center">
-            <a href="laporan/index.php" class="text-3xl cursor-pointer  mb-5 text-center">History Pembayaran</a>
+            <a href="laporan/index.php" class="text-3xl cursor-pointer  mb-5 text-center font-semibold hover:text-gray-400">History Pembayaran</a>
         </div>
         <?php if (empty($pembayaranData)): ?>
             <p>Tidak ada data pembayaran ditemukan.</p>
         <?php else: ?>
-            <table class="min-w-full table-auto border-collapse">
+            <table class="min-w-full table-auto border-collapse shadow-md bg-white">
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="px-4 py-2">ID</th>
@@ -186,7 +191,7 @@ $pembayaranData = getAllDataPembayaran();
                             <td class="px-4 py-2"><?= htmlspecialchars($pembayaran['bulan_dibayar']); ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($pembayaran['tahun_dibayar']); ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($pembayaran['tahun']); ?></td>
-                            <td class="px-4 py-2"><?= htmlspecialchars($pembayaran['nominal']); ?></td>
+                            <td class="px-4 py-2"><?php echo number_format($pembayaran['jumlah_bayar'], 0, ',', '.');?></td>
                             <td class="px-4 py-2"><?php
                                                     if ($pembayaran['status'] == 'selesai') { ?>
                                     <p class="text-green-500"> <?= htmlspecialchars($pembayaran['status']); ?></p>

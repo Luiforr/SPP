@@ -60,7 +60,7 @@ if (isset($_GET['success'])) {
     include '../../componen/navbar.php';
     ?>
    
-    <div class="container mx-auto  my-5 p-5 bg-white rounded shadow-md text-center">
+    <div class="container mx-auto  my-5 p-5  text-center">
         <div class="flex justify-between mb-4 ">
             <h1 class="text-3xl font-bold mb-5">Daftar spp</h1>
             <form method="GET" action="" class="mb-4 flex gap-2">
@@ -79,13 +79,13 @@ if (isset($_GET['success'])) {
                 <div class="flex mb-3">
                     <input type="text" name="tahun" class="px-4 py-2 w-1/2 border rounded" placeholder="Tahun" required>
                     <input type="text" name="nominal" class="px-4 py-2 w-1/2 ml-2 border rounded" placeholder="nominal" required>
-                    <button type="submit" name="create" class="  ml-2 px-4 text-sm bg-[#2D5074] text-white rounded cursor-pointer">+ </button>
+                    <button type="submit" name="create" class="  ml-2 px-4 text-sm bg-green-500 text-white rounded cursor-pointer font-semibold w-30 hover:bg-green-300 ">+ SPP </button>
                 </div>
             </form>
         <?php if (empty($sppData)): ?>
             <p>Tidak ada data spp ditemukan.</p>
         <?php else: ?>
-            <table class="min-w-full table-auto border-collapse">
+            <table class="min-w-full table-auto border-collapse bg-white shadow-md">
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="px-4 py-2">ID Spp</th>
