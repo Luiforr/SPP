@@ -1,5 +1,5 @@
 <?php
-include "aksi.php";
+include "laporan_aksi.php";
 session_start();
 
 $username = $_SESSION['username'];
@@ -34,16 +34,21 @@ $pembayaran = getGenerateByTanggal($bulan);
     <div class="grid grid-cols-2 gap-10 mx-auto">
             <div class="flex flex-col justify-center items-center rounded-md font-semibold">
                 <p class="text-green-400">
-
-                    <?php echo number_format(sumPembayaranSelesai($bulan), 0, ',', '.'); ?></p>
+                  
+                    <?php
+                  echo number_format(sumPembayaranSelesai($bulan), 0, ',', '.');
+                    ?></p>
+                </p>
                 <p>Jumlah Pembayaran Selesai</p>
             </div>
             <div class=" flex flex-col justify-center items-center rounded-md py-4 px-10  font-semibold">
-                <p class="text-red-400">
-                    <?php echo number_format(sumPembayaranBelum($bulan), 0, ',', '.'); ?></p>
+            <p class="text-red-400">   
+                <?php
+               echo number_format(sumPembayaranBelum($bulan), 0, ',', '.');
+                ?></p>
+                </p>
                 <p>Jumlah Pembayaran Belum </p>
             </div>
-        </div>
     </section>
     <form action="" method="POST" class=" flex text-center">
         <table class="min-w-full p-10 mx-auto table-auto border-collapse mt-5 shadow-md bg-white border-y ">
@@ -81,7 +86,7 @@ $pembayaran = getGenerateByTanggal($bulan);
                                                 onclick="toggleSelect('<?= $laporan['id_pembayaran'] ?>')">
                                                 Belum
                                             </span>
-                                        <?php endif; ?>                                                                     
+                                        <?php endif; ?>
                                 </td>
                             </tr>
                     <?php endforeach;

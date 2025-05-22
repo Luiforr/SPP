@@ -23,11 +23,12 @@ $id_spp = $_GET['edit'] ?? null;
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $limit = 5;
-$offset = ($page - 1) * $limit;
+$offset = ($page - 1) * $limit +1;
 
 $sppData = getAllData($search, $limit, $offset);
 $totalData = countAllData($search);
 $totalPages = ceil($totalData / $limit);
+$no = ($page - 1) * $limit + 1;
 
 if (isset($_GET['success'])) {
     switch ($_GET['success']) {
@@ -50,7 +51,7 @@ if (isset($_GET['success'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Daftar Spp</title>
+    <title>Daftar SPP</title>
     <link href="../output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -88,7 +89,8 @@ if (isset($_GET['success'])) {
             <table class="min-w-full table-auto border-collapse bg-white shadow-md">
                 <thead>
                     <tr class="bg-gray-200">
-                        <th class="px-4 py-2">ID Spp</th>
+                    <th class="px-4 py-2">NO</th>
+                        <th class="px-4 py-2">ID</th>
                         <th class="px-4 py-2">Tahun</th>
                         <th class="px-4 py-2">Nominal</th>
                         <th class="px-4 py-2">Aksi</th>
@@ -97,9 +99,10 @@ if (isset($_GET['success'])) {
                 <tbody>
                     <?php foreach ($sppData as $spp): ?>
                         <tr class="border-t">
+                        <td class="px-4 py-2"><?= htmlspecialchars($no++); ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($spp['id_spp']); ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($spp['tahun']); ?></td>
-                            <td class="px-4 py-2"><?= htmlspecialchars($spp['nominal']); ?></td>
+                            <td class="px-4 py-2">RP <?php echo number_format($spp['nominal'], 0, ',', '.');?></td>
                             <td class="px-4 py-2">
                                 <a href="edit.php?id=<?= $spp['id_spp']; ?>" class="text-[#00FF33] hover:underline">Edit</a>
                                 <a href="index.php?delete=<?= $spp['id_spp']; ?>"

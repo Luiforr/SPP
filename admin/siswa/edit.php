@@ -1,5 +1,7 @@
 <?php
 include 'siswa_aksi.php';
+session_start();
+
 if (!isset($_GET['nisn'])) {
   header('Location: ../index.php');
     exit;
@@ -30,9 +32,7 @@ if (isset($_POST['update'])) {
 
 </head>
 <body class="bg-gray-100">
-  <?php
-  include '../../componen/admin.php';
-  ?>
+  <?php include '../../componen/navbar.php'; ?>
   <div class="container mx-auto my-5 p-5 bg-white rounded shadow-md">
     <h1 class="text-2xl font-bold mb-4">Edit Siswa</h1>
     <form action="" method="POST">

@@ -37,7 +37,7 @@ $totalBayarBulanIni = sumPembayaranBulanIni();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Daftar Siswa</title>
+    <title>Petugas Dashboard</title>
     <link href="../output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -66,7 +66,7 @@ $totalBayarBulanIni = sumPembayaranBulanIni();
             <div class=" text-black flex flex-col justify-center items-center rounded-md  py-6 px-10  font-bold">
                 <p>
                 <?php
-                       echo number_format($totalBayarBulanIni, 0, ',', '.');
+                       echo "RP " . number_format($totalBayarBulanIni, 0, ',', '.');
                     ?>
                 </p>
                 <p>pembayaran bulan ini</p>
@@ -118,13 +118,20 @@ $totalBayarBulanIni = sumPembayaranBulanIni();
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['bulan_dibayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun_dibayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun']); ?></td>
-                                    <td class="px-4 py-2"><?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></td>
-                                    <td class="px-4 py-2"><?php
-                                                            if ($laporan['status'] == 'selesai') { ?>
-                                            <p class="text-green-500"> <?= htmlspecialchars($laporan['status']); ?></p>
-                                        <?php } else { ?>
-                                            <p class="text-red-500"><?= htmlspecialchars($laporan['status']); ?> </p><?php
-                                                                                                                    } ?>
+                                    <td class="px-4 py-2">RP <?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></td>
+                                    <td class="px-4 py-2 font-semibold"> <?php if ($laporan['status'] === 'selesai'): ?>
+                                            <span
+                                                class="text-green-600 font-semibold cursor-pointer"
+                                                onclick="toggleSelect('<?= $laporan['id_pembayaran'] ?>')">
+                                                Selesai
+                                            </span>
+                                        <?php else: ?>
+                                            <span
+                                                class="text-red-600 font-semibold cursor-pointer"
+                                                onclick="toggleSelect('<?= $laporan['id_pembayaran'] ?>')">
+                                                Belum
+                                            </span>
+                                        <?php endif; ?>
                                     </td>   
                                 </tr>
                             <?php endforeach; ?>

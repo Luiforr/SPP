@@ -21,32 +21,10 @@ if (isset($_POST['create'])) {
   <link href="../output.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-
-
-
 <body class="bg-blue-50">
-
-  <!-- NAVBAR -->
-  <!-- <nav class="bg-[#4692AF] sticky z-50 top-0">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center text-white">
-      <div class="text-lg font-bold">SPP Admin</div>
-      <div class="flex space-x-4">
-        <a href="#" class="hover:underline">Dashboard</a>
-        <a href="#" class="hover:underline">Petugas</a>
-        <a href="#" class="hover:underline font-bold">Siswa</a>
-        <a href="#" class="hover:underline">Kelas</a>
-        <a href="#" class="hover:underline">Laporan</a>
-        <a href="#" class="bg-red-500 px-2 py-1 rounded hover:bg-red-400">Logout</a>
-      </div>
-    </div>
-  </nav> -->
-
-
   <?php
   include '../../componen/navbar.php';
   ?>
-
-  <!-- FORM TAMBAH -->
   <div class="flex justify-center items-center min-h-screen">
     <form method="POST" action="" class="bg-white shadow-xl p-6 rounded-xl w-full max-w-md space-y-4">
       <h2 class="text-2xl font-bold text-center">Tambah Siswa</h2>
@@ -98,7 +76,5 @@ if (isset($_POST['create'])) {
       </div>
     </form>
   </div>
-
 </body>
-
 </html>

@@ -22,10 +22,10 @@ $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $limit = 5;
 $offset = ($page - 1) * $limit;
-
 $petugasData = getAllData($search, $limit, $offset);
 $totalData = countAllData($search);
 $totalPages = ceil($totalData / $limit);
+$no = ($page - 1) * $limit + 1;
 
 // if (isset($_GET['success'])) {
 //     switch ($_GET['success']) {
@@ -48,7 +48,7 @@ $totalPages = ceil($totalData / $limit);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Daftar Petugas</title>
+    <title>Daftar Petugas</title>
     <link href="../output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -61,11 +61,6 @@ $totalPages = ceil($totalData / $limit);
         <div class="flex justify-between mb-4 ">
             <h1 class="text-3xl font-bold mb-5">Daftar Petugas</h1>
         </div>
-        <?php if (!empty($successMessage)): ?>
-            <div class="mb-5 px-4 py-2 bg-green-100 text-green-800 rounded border border-green-300">
-                <?= $successMessage; ?>
-            </div>
-        <?php endif; ?>
         <div class="flex justify-between">
         
         <form method="GET" action="" class="mb-4 flex gap-2">
@@ -79,7 +74,8 @@ $totalPages = ceil($totalData / $limit);
                 <table class="min-w-full table-auto border-collapse shadow-md bg-white">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th class="px-4 py-2">ID Petugas</th>
+                            <th class="px-4 py-2">NO</th>
+                            <th class="px-4 py-2">ID</th>
                             <th class="px-4 py-2">Username</th>
                             <th class="px-4 py-2">Nama Petugas</th>
                             <th class="px-4 py-2">Aksi</th>
@@ -89,6 +85,7 @@ $totalPages = ceil($totalData / $limit);
                         <form action="aksi_logout.php" method="POST">
                             <?php foreach ($petugasData as $petugas): ?>
                                 <tr class="border-t">
+                                <td class="px-4 py-2"><?= htmlspecialchars($no++); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($petugas['id_petugas']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($petugas['username']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($petugas['nama_petugas']); ?></td>

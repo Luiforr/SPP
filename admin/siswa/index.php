@@ -15,7 +15,7 @@ $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $limit = 5;
 $offset = ($page - 1) * $limit;
-
+$no = ($page - 1) * $limit + 1;
 $siswaData = getAllData($search, $limit, $offset);
 $totalData = countAllData($search);
 $totalPages = ceil($totalData / $limit);
@@ -41,7 +41,7 @@ $totalPages = ceil($totalData / $limit);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Daftar Siswa</title>
+    <title>Daftar Siswa</title>
     <link href="../output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -77,6 +77,7 @@ $totalPages = ceil($totalData / $limit);
             <table class="min-w-full table-auto border-collapse shadow-md bg-white">
                 <thead>
                     <tr class="bg-gray-200">
+                    <th class="px-4 py-2">NO</th>
                         <th class="px-4 py-2">Nisn</th>
                         <th class="px-4 py-2">Nis</th>
                         <th class="px-4 py-2">Nama siswa</th>
@@ -93,6 +94,7 @@ $totalPages = ceil($totalData / $limit);
 
                         <?php foreach ($siswaData as $siswa): ?>
                             <tr class="border-t">
+                            <td class="px-4 py-2"><?= htmlspecialchars($no++); ?></td>
                                 <td class="px-4 py-2"><?= htmlspecialchars($siswa['nisn']); ?></td>
                                 <td class="px-4 py-2"><?= htmlspecialchars($siswa['nis']); ?></td>
                                 <td class="px-4 py-2"><?= htmlspecialchars($siswa['nama']); ?></td>
