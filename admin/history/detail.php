@@ -1,8 +1,6 @@
 <?php
-session_start();
 include 'aksi.php';
-include '../../componen/navgas.php';
-
+session_start();
 
 if (!isset($_GET['id_pembayaran'])) {
     header('Location: ../index.php');
@@ -18,31 +16,31 @@ if (!$laporan) {
 }
 
 // if (isset($_POST['update'])) {
-//     updateKelas($_POST['id_kelas'], $_POST['nama_kelas'], $_POST['kompetensi_keahlian']);
-//     header('Location: ../index.php?success=update');
-//     exit;
-// }
-
-if (isset($_GET['delete'])) {
-    deletePembayaran($_GET['delete']);
-    header("Location: ../php-front/admin/kelas/index.php?success=delete");
-    exit;
-}
-?>
+    //     updateKelas($_POST['id_kelas'], $_POST['nama_kelas'], $_POST['kompetensi_keahlian']);
+    //     header('Location: ../index.php?success=update');
+    //     exit;
+    // }
+    
+    if (isset($_GET['delete'])) {
+        deletePembayaran($_GET['delete']);
+        header("Location: ../php-front/admin/kelas/index.php?success=delete");
+        exit;
+    }
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Pembayaran</title>
-    <link href="../output.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-
-<body>
-
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Detail Pembayaran</title>
+        <link href="../output.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    
+    <body>
+     <?php  include '../../componen/navbar.php'; ?>
     <div class="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl border border-gray-200">
         <h2 class="text-3xl font-bold text-[#2D5074] mb-6 text-center border-b pb-2">Detail Pembayaran</h2>
 

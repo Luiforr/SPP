@@ -50,7 +50,8 @@ function sumPembayaranBulanIni() {
     $tahun = date('Y');
 
     $sql = "SELECT SUM(jumlah_bayar) AS total FROM pembayaran 
-            WHERE MONTH(tgl_bayar) = ? AND YEAR(tgl_bayar) = ?";
+            WHERE MONTH(tgl_bayar) = ? AND YEAR(tgl_bayar) = ?
+            AND status = 'selesai'";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$bulan, $tahun]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);

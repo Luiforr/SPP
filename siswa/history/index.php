@@ -14,7 +14,7 @@ $bulan = isset($_GET['bulan']) ? $_GET['bulan'] : null;
 $pembayaran = getPembayaranSiswa($nisn, $bulan, $limit, $offset);
 $totalData = countPembayaranSiswa($nisn, $bulan);
 $totalPages = ceil($totalData / $limit);
-
+$no = ($page - 1) * $limit + 1;
 
 
 ?>
@@ -25,7 +25,7 @@ $totalPages = ceil($totalData / $limit);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Daftar Siswa</title>
+    <title>History Pembayaran Siswa</title>
     <link href="../output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -46,7 +46,7 @@ $totalPages = ceil($totalData / $limit);
         <form method="GET" action="">
             <label for="tanggal">Cari History :</label>
             <div class="flex">
-                <input type="month" class="w-full px-2 py-1 rounded-md border" name="bulan" id="bulan" value="<?php echo isset($_GET['bulan']) ? $_GET['bulan'] : ''; ?>" required>
+                <input type="month" class="w-full px-2 py-1 rounded-md border" name="bulan" id="bulan" value="<?php echo isset($_GET['bulan']) ? $_GET['bulan'] : ''; ?>" >
                 <button type="submit" name="" class="ml-2 px-4 text-sm bg-[#2D5074] text-white rounded ">Filter</button>
             </div>
         </form>
@@ -70,18 +70,25 @@ $totalPages = ceil($totalData / $limit);
                     <form action="" method="POST">
                         <?php
                         if ($pembayaran) {
-                            $no = 1;
+                           
                             foreach ($pembayaran as $laporan): ?>
                                 <tr class="border-t">
                                     <td class="px-4 py-2"><?= $no++ ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tgl_bayar']); ?></td>
-                                    <td class="px-4 py-2"><?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></td>
-                                    <td class="px-4 py-2"><?php
-                                    if($laporan['status'] == 'selesai'){?>
-                                        <p class="text-green-500"> <?= htmlspecialchars($laporan['status']); ?></p>
-                                        <?php }else{?>
-                                        <p  class="text-red-500"><?= htmlspecialchars($laporan['status']); ?> </p><?php
-                                    }?></td>
+                                    <td class="px-4 py-2">RP <?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></td>
+                                    <td class="px-4 py-2 font-semibold"> <?php if ($laporan['status'] === 'selesai'): ?>
+                                            <span
+                                                class="text-green-600 font-semibold cursor-pointer"
+                                                onclick="toggleSelect('<?= $laporan['id_pembayaran'] ?>')">
+                                                Selesai
+                                            </span>
+                                        <?php else: ?>
+                                            <span
+                                                class="text-red-600 font-semibold cursor-pointer"
+                                                onclick="toggleSelect('<?= $laporan['id_pembayaran'] ?>')">
+                                                Belum
+                                            </span>
+                                        <?php endif; ?></td>
                                 </tr>
                     <?php endforeach;
                         }
@@ -100,7 +107,7 @@ $totalPages = ceil($totalData / $limit);
     
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                 <a href="?bulan=<?= urlencode($bulan) ?>&page=<?= $i ?>"
-                    class="px-3 py-1 rounded <?= $i == $page ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300' ?>">
+                    class="px-3 py-1 rounded <?= $i == $page ? 'bg-[#2D5074] text-white' : 'bg-gray-200 hover:bg-gray-300' ?>">
                     <?= $i ?>
                 </a>
             <?php endfor; ?>

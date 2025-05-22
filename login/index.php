@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <div class="flex justify-center items-center min-h-screen ">
 <form method="POST" class=" shadow-xl p-10 grid grid-cols-1 gap-2  w-full max-w-md space-y-1 rounded-lg border-1 border-black">
-<h2 class=" font-bold text-4xl text-center mb-8">Login Admin</h2>
+<h2 class=" font-bold text-4xl text-center mb-8">Login Petugas</h2>
 <div>
     <label class="font-semibold ">Username</label>
     <input type="text" name="username" required placeholder="username" class="w-full h-12 px-4 py-2 rounded-xl focus:outline-none focus:ring-2 outline-1 focus:ring-[#2D5074] bg-[#D1CECA]  placeholder-[#123458]">

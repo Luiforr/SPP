@@ -1,5 +1,6 @@
 <?php
 include 'petugas_aksi.php';
+session_start();
 
 $id_petugas = $_GET['id_petugas'];
 $petugas = getPetugasById($id_petugas);
@@ -19,15 +20,13 @@ if (isset($_POST['update'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Edit petugas</title>
+    <title>Edit Petugas</title>
     <link href="../../output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body class="bg-gray-100">
-    <?php
-    include "../../componen/admin.php"
-    ?>
+    <?php include '../../componen/navbar.php'; ?>
     <div class="container mx-auto my-5 p-5 bg-white rounded shadow-md">
         <h1 class="text-2xl font-bold mb-4">Edit Petugas</h1>
         <form action="" method="POST">

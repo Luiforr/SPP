@@ -1,6 +1,5 @@
 <?php
 include 'aksi.php';
-
 session_start();
 
 $id_petugas = $_SESSION['id_petugas'];
@@ -37,7 +36,7 @@ if (isset($_POST['update'])) {
 
 
 <body class="bg-gray-100">
-<?php include '../../componen/navgas.php'; ?>
+<?php include '../../componen/navbar.php'; ?>
 <div class="flex justify-center items-center min-h-screen">
         <form method="POST" action="" class="bg-white shadow-xl p-6 rounded-xl w-full max-w-md space-y-4">
             <h2 class="text-2xl font-bold text-center">Entry Transaksi</h2>

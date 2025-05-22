@@ -39,6 +39,7 @@ $offset = ($page - 1) * $limit;
 $kelasData = getAllData($search, $limit, $offset);
 $totalData = countAllData($search);
 $totalPages = ceil($totalData / $limit);
+$no = ($page - 1) * $limit + 1;
 
 if (isset($_GET['success'])) {
     switch ($_GET['success']) {
@@ -61,7 +62,7 @@ if (isset($_GET['success'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Daftar Kelas</title>
+    <title>Daftar Kelas</title>
     <link href="../output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -113,7 +114,8 @@ if (isset($_GET['success'])) {
             <table class="min-w-full table-auto border-collapse shadow-md bg-white">
                 <thead>
                     <tr class="bg-gray-200">
-                        <th class="px-4 py-2">ID Kelas</th>
+                    <th class="px-4 py-2">NO</th>
+                        <th class="px-4 py-2">ID</th>
                         <th class="px-4 py-2">Nama Kelas</th>
                         <th class="px-4 py-2">Kompetensi Keahlian</th>
                         <th class="px-4 py-2">Aksi</th>
@@ -122,6 +124,7 @@ if (isset($_GET['success'])) {
                 <tbody>
                     <?php foreach ($kelasData as $kelas): ?>
                         <tr class="border-t">
+                        <td class="px-4 py-2"><?= htmlspecialchars($no++); ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($kelas['id_kelas']); ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($kelas['nama_kelas']); ?></td>
                             <td class="px-4 py-2"><?= htmlspecialchars($kelas['kompetensi_keahlian']); ?></td>
