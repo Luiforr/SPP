@@ -134,7 +134,7 @@ $totalBelum = sumPembayaranBelum($bulan);
             </table>
         </form>
     </div>
-        <div class=" flex justify-center space-x-2">
+        <div class=" flex justify-center space-x-2 mb-4">
             <?php
             if ($page > 1): ?>
                 <a href="?bulan=<?= urlencode($bulan) ?>&page=<?= $page - 1 ?>" class="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400"><</a>
@@ -152,5 +152,5 @@ $totalBelum = sumPembayaranBelum($bulan);
             <?php endif; ?>
         </div>
 </body>
-
+<?php include "../../componen/footer.php"  ?>
 </html>

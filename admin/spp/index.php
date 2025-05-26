@@ -131,5 +131,5 @@ if (isset($_GET['success'])) {
         <?php endif; ?>
     </div>
 </body>
-
+<?php include "../../componen/footer.php"  ?>
 </html>

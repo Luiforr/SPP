@@ -41,14 +41,12 @@ if (isset($_POST['update'])) {
             </div>
             <div class="mb-3">
                 <label class="block font-semibold">Level ( <?= htmlspecialchars($petugas['level']); ?> )</label>
-                <select name="level" class="w-full border px-2 py-1 rounded-md" id="level" required>
-                    <option value="">
-                        --Edit Level--  
+                <select name="level" class="w-full border px-2 py-1 rounded-md" id="level">
+                    <option value="<?= htmlspecialchars($petugas['level']); ?>">
+                        --<?= htmlspecialchars($petugas['level']); ?>--  </option>
                     <option value="admin">Admin</option>
                     <option value="petugas">Petugas</option>
-                    </option>
-                    </option>
-
+                  
                 </select>
             </div>
             <div class="flex justify-end">

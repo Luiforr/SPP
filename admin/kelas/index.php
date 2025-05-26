@@ -73,7 +73,7 @@ if (isset($_GET['success'])) {
     ?>
 
  
-    <div class="container mx-auto  my-5 p-5   text-center">
+    <main class="container mx-auto  my-5 p-5   text-center">
         <div class="flex justify-between mb-4 text-center">
 
             <h1 class="text-3xl  mb-5 text-center font-bold">Daftar Kelas</h1>
@@ -156,7 +156,9 @@ if (isset($_GET['success'])) {
         <?php if ($page < $totalPages): ?>
             <a href="?search=<?= urlencode($search) ?>&page=<?= $page + 1 ?>" class="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400">></a>
         <?php endif; ?>
-    </div>
+        </main>
 </body>
-
+<footer>
+    <?php include "../../componen/footer.php"  ?>
+</footer>
 </html>

@@ -51,7 +51,7 @@ $pembayaran = getGenerateByTanggal($bulan);
             </div>
     </section>
     <form action="" method="POST" class=" flex text-center">
-        <table class="min-w-full p-10 mx-auto table-auto border-collapse mt-5 shadow-md bg-white border-y ">
+        <table class="min-w-full p-10  mx-auto table-auto border-collapse mt-5 shadow-md bg-white border-y ">
             <thead>
                 <tr class="bg-gray-200 ">
                     <th class="px-4 py-2 border-x">NO</th>
@@ -74,9 +74,9 @@ $pembayaran = getGenerateByTanggal($bulan);
                                 <td class="px-4 py-2 border-x"><?= htmlspecialchars($laporan['nama']); ?></td>
                                 <td class="px-4 py-2 border-x"><?= htmlspecialchars($laporan['tgl_bayar']); ?></td>
                                 <td class="px-4 py-2 border-x">RP <?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.'); ?></td>
-                                <td class="px-4 py-2 border-x font-semibold"> <?php if ($laporan['status'] === 'selesai'): ?>
+                                <td class="px-4 py-2  border-x font-semibold"> <?php if ($laporan['status'] === 'selesai'): ?>
                                             <span
-                                                class="text-green-600 font-semibold cursor-pointer"
+                                                class=" text-green-600 font-semibold cursor-pointer"
                                                 onclick="toggleSelect('<?= $laporan['id_pembayaran'] ?>')">
                                                 Selesai
                                             </span>

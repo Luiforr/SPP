@@ -22,7 +22,7 @@ if ($_SESSION['status'] != "petugas") {
             </div>
             <div class="flex flex-1 items-start justify-start sm:items-stretch sm:justify-start">
                 <div class="flex shrink-0 items-center">
-                    <a href="/php-front/petugas/dashboard.php" class="h-8 w-auto text-white text-2xl font-medium cursor-pointer">Logo</a>
+                    <a href="/php-front/petugas/dashboard.php" class="h-8 w-auto text-white text-2xl font-medium cursor-pointer">SPP</a>
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

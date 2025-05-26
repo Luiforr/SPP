@@ -141,5 +141,7 @@ $totalBayarBulanIni = sumPembayaranBulanIni();
             <?php endif; ?>
     </div>
 </body>
-
+<footer>
+<?php include "../componen/footer.php"  ?>
+</footer>
 </html>

@@ -118,4 +118,5 @@ $no = ($page - 1) * $limit + 1;
         <?php endif; ?>
     </div>
 </body>
+<?php include "../../componen/footer.php"  ?>
 </html>

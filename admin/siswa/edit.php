@@ -46,7 +46,7 @@ if (isset($_POST['update'])) {
             <input type="text" name="nama" value="<?= htmlspecialchars($siswa['nama']); ?>" class="w-full px-4 py-2 border rounded" required>
         </div>
         <div class="mb-3">
-          <select name="id_kelas" id="id_kelas" required class="w-full border px-2 py-1 rounded-md">
+          <select name="id_kelas" id="id_kelas"  class="w-full border px-2 py-1 rounded-md">
           <option value="<?= $siswa['id_kelas']; ?>">-- <?= htmlspecialchars($siswa['nama_kelas']) ; ?> --</option>
           <?php foreach ($kelasList as $kelas): ?>
             <option value="<?= htmlspecialchars($kelas['id_kelas']) ?>">
@@ -56,7 +56,7 @@ if (isset($_POST['update'])) {
         </select>  
         </div>
         <div class="mb-3">
-        <select name="id_spp" id="id_spp" required class="w-full border px-2 py-1 rounded-md">
+        <select name="id_spp" id="id_spp"  class="w-full border px-2 py-1 rounded-md">
           <option value="<?= $siswa['id_spp']; ?>">-- <?= htmlspecialchars($siswa['tahun']) ; ?> --</option>
           <?php foreach ($sppList as $spp): ?>
             <option value="<?= htmlspecialchars($spp['id_spp']) ?>">

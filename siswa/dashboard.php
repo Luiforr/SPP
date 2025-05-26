@@ -111,5 +111,7 @@ $hasil = getTotalPembayaranByStatus($nisn);
             <?php endif; ?>
     </div>
 </body>
-
+<footer>
+<?php include "../componen/footer.php"  ?>
+</footer>
 </html>

@@ -17,7 +17,7 @@ function getIdPetugasByUsername($username) {
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16 items-center">
       <div class="flex items-center">
-        <a href="/php-front/admin/dashboard.php" class="text-2xl font-bold">Logo</a>
+        <a href="/php-front/admin/dashboard.php" class="text-2xl font-bold">SPP</a>
       </div>
       
       <div class="hidden sm:flex sm:items-center space-x-6">

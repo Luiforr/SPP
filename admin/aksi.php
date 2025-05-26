@@ -1,6 +1,19 @@
 <?php
 include __DIR__ . '/../database.php';
 
+function getDataPetugasId($id_petugas)
+{
+    $conn = getDatabaseConnection();
+    $sql = "SELECT * FROM petugas
+            WHERE id_petugas = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$id_petugas]);
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $data ?: null;
+}
+
+
+
 function getAllDataSiswa($limit = 5, $page = 1)
 {
     $conn = getDatabaseConnection();

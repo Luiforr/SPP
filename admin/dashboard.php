@@ -3,6 +3,7 @@ include "aksi.php";
 session_start();
 
 $username = $_SESSION['username'];
+$id_petugas = $_SESSION['id_petugas'];
 if (isset($_GET['deleteKelas'])) {
     deleteKelas($_GET['deleteKelas']);
     header("Location: dashboard.php?tab=kelas&page=$page");
@@ -23,6 +24,7 @@ if (isset($_GET['deleteSiswa'])) {
     header("Location: dashboard.php?tab=siswa&page=$page");
     exit;
 }
+$userData = getDataPetugasId($id_petugas);
 $totalBayarBulanIni = sumPembayaranBulanIni();
 $limit = 5;
 $activeTab = $_GET['tab'] ?? 'petugas';
@@ -72,30 +74,30 @@ switch ($activeTab) {
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 ">
     <?php
     include '../componen/navbar.php';
     ?>
     <div class=" w-full  mt-6 h-18">
-        <h2 class=" text-center font-medium text-black text-xl ">Selamat datang <?= htmlspecialchars($username) ?> di page Dashboard</h2>
+        <h2 class=" text-center font-medium text-black text-xl ">Selamat datang  <?php echo  $userData["nama_petugas"]?> di page Dashboard</h2>
     </div>
     <section class="flex justify-center ">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 mb-5 px-4 w-full">
-            <div class=" text-black flex flex-col justify-center items-center rounded-md  py-2 px-10   font-bold">
+            <div class=" text-black flex flex-col justify-center items-center rounded-md   px-10   font-bold">
                 <?php
                 echo countSiswa();
                 ?></p>
                 </p>
                 <p>siswa</p>
             </div>
-            <div class=" text-black flex flex-col justify-center items-center rounded-md py-2 px-10  font-bold">
+            <div class=" text-black flex flex-col justify-center items-center rounded-md  px-10  font-bold">
                 <?php
                 echo countPetugas();
                 ?></p>
                 </p>
                 <p>petugas</p>
             </div>
-            <div class=" text-black flex flex-col justify-center items-center rounded-md  py-2 px-10  font-bold">
+            <div class=" text-black flex flex-col justify-center items-center rounded-md   px-10  font-bold">
                 <p>
                     <?php
                     echo number_format($totalBayarBulanIni, 0, ',', '.');
@@ -103,7 +105,7 @@ switch ($activeTab) {
                 </p>
                 <p>pembayaran bulan ini</p>
             </div>
-            <div class=" text-black flex flex-col justify-center items-center rounded-md py-2 px-10   font-bold">
+            <div class=" text-black flex flex-col justify-center items-center rounded-md  px-10   font-bold">
                 <?php
                 echo countKelas();
                 ?></p>
@@ -112,7 +114,7 @@ switch ($activeTab) {
             </div>
         </div>
     </section>
-    <div class="container mx-auto  my-5  text-center">
+    <div class="container mx-auto    text-center p-5">
         <div class="flex justify-center w-full">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 w-full max-w-5xl px-4 mb-4">
                 <a href="?tab=petugas&page=1" class="text-md bg-[#2D5074] font-semibold px-4 py-2 rounded text-center w-full hover:bg-slate-500 hover:text-gray-400 <?= $activeTab == 'petugas' ? 'text-gray-400' : 'text-white' ?>">Petugas</a>
@@ -299,7 +301,7 @@ switch ($activeTab) {
             <?php endif; ?>
         <?php endif; ?>
         <?php if ($totalPages > 1): ?>
-            <div class="mt-4 flex justify-center space-x-2">
+            <div class="mt-4 flex justify-center space-x-2 mb-5">
                 <?php if ($page > 1): ?>
                     <a href="?tab=<?= $activeTab ?>&page=<?= $page - 1 ?>"
                         class="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400">
@@ -317,5 +319,5 @@ switch ($activeTab) {
         <?php endif; ?>
     </div>
 </body>
-
+<?php include "../componen/footer.php"  ?>
 </html>

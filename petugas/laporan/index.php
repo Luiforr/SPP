@@ -143,5 +143,8 @@ $totalPages = ceil($totalData / $limit);
         <?php endif; ?>
     </div>
 </body>
+<footer>
+<?php include "../../componen/footer.php"  ?>
+</footer>
 
 </html>

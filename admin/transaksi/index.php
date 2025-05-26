@@ -59,6 +59,5 @@ if (isset($_POST['create'])) {
                 <button type="submit" name="create" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-400">Simpan</button>
             </div>
         </form>
-</body>
-
-</html>
+    </body>
+    </html>

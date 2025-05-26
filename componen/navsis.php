@@ -29,7 +29,7 @@
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex shrink-0 items-center">
-          <a  href="/php-front/siswa/dashboard.php" class="h-8 w-auto text-white text-2xl font-medium cursor-pointer">Logo</a>
+          <a  href="/php-front/siswa/dashboard.php" class="h-8 w-auto text-white text-2xl font-medium cursor-pointer">SPP</a>
         </div>
        
          

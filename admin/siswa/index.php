@@ -19,19 +19,7 @@ $no = ($page - 1) * $limit + 1;
 $siswaData = getAllData($search, $limit, $offset);
 $totalData = countAllData($search);
 $totalPages = ceil($totalData / $limit);
-// if (isset($_GET['success'])) {
-//     switch ($_GET['success']) {
-//         case 'create':
-//             $successMessage = " Data siswa berhasil ditambahkan.";
-//             break;
-//         case 'update':
-//             $successMessage = "Data siswa berhasil diperbarui.";
-//             break;
-//         case 'delete':
-//             $successMessage = " Data siswa berhasil dihapus.";
-//             break;
-//     }
-// }
+
 
 ?>
 
@@ -130,5 +118,5 @@ $totalPages = ceil($totalData / $limit);
         <?php endif; ?>
     </div>
 </body>
-
+<?php include "../../componen/footer.php"  ?>
 </html>
