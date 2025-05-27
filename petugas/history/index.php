@@ -41,6 +41,7 @@ $totalPages = ceil($totalData / $limit);
     <title>History Pembayaran</title>
     <link href="../output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
 </head>
 
 <body class="bg-gray-100">

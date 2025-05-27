@@ -1,6 +1,10 @@
 <?php
 include "aksi_login.php";
 
+if(isset($_SESSION['status'])) {
+    header("location:/php-front/admin/dashboard.php");
+}
+
 $result = null;
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     $username = $_POST["username"] ?? '';

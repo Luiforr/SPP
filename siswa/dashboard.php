@@ -2,6 +2,7 @@
 include "aksi.php";
 session_start();
 
+$no = 1;
 $nis = $_SESSION['nis'];
 $siswaData = getIdSiswaByNIS($nis);
 $nisn = $siswaData['nisn'];
@@ -64,9 +65,7 @@ $hasil = getTotalPembayaranByStatus($nisn);
                 <table class="min-w-full table-auto border-collapse shadow-md bg-white">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th class="px-4 py-2">Id</th>
-                            <th class="px-4 py-2">Petugas</th>
-                            <th class="px-4 py-2">Nisn</th>
+                            <th class="px-4 py-2">NO</th>
                             <th class="px-4 py-2">Tanggal Bayar</th>
                             <th class="px-4 py-2">Bulan</th>
                             <th class="px-4 py-2">Tahun</th>
@@ -82,9 +81,7 @@ $hasil = getTotalPembayaranByStatus($nisn);
 
                             <?php foreach ($laporanData as $laporan): ?>
                                 <tr class="border-t">
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['id_pembayaran']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['nama_petugas']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['nisn']); ?></td>
+                                    <td class="px-4 py-2"><?= htmlspecialchars($no++); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tgl_bayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['bulan_dibayar']); ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun_dibayar']); ?></td>

@@ -64,6 +64,10 @@ if (isset($_GET['delete'])) {
                 <p class="text-lg"><?= htmlspecialchars($laporan['nis']); ?></p>
             </div>
             <div>
+                <p class="font-medium text-gray-500">Nama Siswa</p>
+                <p class="text-lg"><?= htmlspecialchars($laporan['nama']); ?></p>
+            </div>
+            <div>
                 <p class="font-medium text-gray-500">Tanggal Bayar</p>
                 <p class="text-lg"><?= htmlspecialchars($laporan['tgl_bayar']); ?></p>
             </div>

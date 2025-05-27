@@ -1,10 +1,4 @@
-<?php
 
-
-if ($_SESSION['status'] != "login") {
-  header("location:/php-front/login/siswa.php?pesan=belum_login");
-}
-?>
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 <nav class="bg-[#1F3B57] sticky z-50 top-0" x-data="{ dropdownOpen: false }">
@@ -12,7 +6,7 @@ if ($_SESSION['status'] != "login") {
     <div class="relative flex h-16 items-center justify-between">
       <div class="flex flex-1 items-center justify-start sm:items-stretch sm:justify-start">
         <div class="flex shrink-0 items-center">
-          <a href="/php-front/siswa/dashboard.php" class="font-extrabold text-2xl sm:text-3xl text-white hover:text-gray-300 cursor-pointer">SPP</a>
+          <a href="/php-front/index.php" class="font-extrabold text-2xl sm:text-3xl text-white hover:text-gray-300 cursor-pointer">SPP</a>
         </div>
       </div>
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -40,9 +34,7 @@ if ($_SESSION['status'] != "login") {
                 class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white">Account</a>
            </div>
          </div>
-        <form action="/php-front/siswa/aksi_logout.php">
-          <button action="/php-front/siswa/aksi_logout.php" class=" ml-5 px-2 py-1 w-23 bg-red-600 cursor-pointer text-white font-medium rounded-md hover:bg-red-400" type="submit">Logout</button>
-        </form>
+        <a href="login/siswa.php"  class="text-center ml-5 px-2 py-1 w-24 bg-green-600 cursor-pointer text-white font-medium rounded-md hover:bg-green-400" >Login</a>
       </div>
     </div>
   </div>

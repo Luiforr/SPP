@@ -14,9 +14,11 @@ function loginUser($username , $password )
         $_SESSION['id_petugas']= $user ['id_petugas'];
         if ($user ['level'] == 'admin') {
             $_SESSION['status']= "admin";
+           
             header("Location: /php-front/admin/dashboard.php");
         }else{
             $_SESSION['status']= "petugas";
+           
             header("Location: /php-front/petugas/dashboard.php");
         }
     }else{

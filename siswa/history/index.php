@@ -47,7 +47,7 @@ $no = ($page - 1) * $limit + 1;
             <label for="tanggal">Cari History :</label>
             <div class="flex">
                 <input type="month" class="w-full px-2 py-1 rounded-md border" name="bulan" id="bulan" value="<?php echo isset($_GET['bulan']) ? $_GET['bulan'] : ''; ?>" >
-                <button type="submit" name="" class="ml-2 px-4 text-sm bg-[#2D5074] text-white rounded ">Filter</button>
+                <button type="submit" name="" class="ml-2 px-4 text-sm bg-[#1F3B57] text-white rounded cursor-pointer">Filter</button>
             </div>
         </form>
 
@@ -62,6 +62,9 @@ $no = ($page - 1) * $limit + 1;
                     <tr class="bg-gray-200">
                         <th class="px-4 py-2">NO</th>
                         <th class="px-4 py-2">Tanggal Bayar</th>
+                        <th class="px-4 py-2">Bulan</th>
+                        <th class="px-4 py-2">Tahun</th>
+                        <th class="px-4 py-2">SPP</th>
                         <th class="px-4 py-2">Jumlah Bayar</th>
                         <th class="px-4 py-2">Status</th>
                     </tr>
@@ -75,6 +78,9 @@ $no = ($page - 1) * $limit + 1;
                                 <tr class="border-t">
                                     <td class="px-4 py-2"><?= $no++ ?></td>
                                     <td class="px-4 py-2"><?= htmlspecialchars($laporan['tgl_bayar']); ?></td>
+                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['bulan_dibayar']); ?></td>
+                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun_dibayar']); ?></td>
+                                    <td class="px-4 py-2"><?= htmlspecialchars($laporan['tahun']); ?></td>
                                     <td class="px-4 py-2">RP <?php echo number_format($laporan['jumlah_bayar'], 0, ',', '.');?></td>
                                     <td class="px-4 py-2 font-semibold"> <?php if ($laporan['status'] === 'selesai'): ?>
                                             <span
@@ -107,7 +113,7 @@ $no = ($page - 1) * $limit + 1;
     
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                 <a href="?bulan=<?= urlencode($bulan) ?>&page=<?= $i ?>"
-                    class="px-3 py-1 rounded <?= $i == $page ? 'bg-[#2D5074] text-white' : 'bg-gray-200 hover:bg-gray-300' ?>">
+                    class="px-3 py-1 rounded <?= $i == $page ? 'bg-[#1F3B57] text-white' : 'bg-gray-200 hover:bg-gray-300' ?>">
                     <?= $i ?>
                 </a>
             <?php endfor; ?>
