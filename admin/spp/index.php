@@ -23,7 +23,7 @@ $id_spp = $_GET['edit'] ?? null;
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $limit = 5;
-$offset = ($page - 1) * $limit +1;
+$offset = ($page - 1) * $limit;
 
 $sppData = getAllData($search, $limit, $offset);
 $totalData = countAllData($search);

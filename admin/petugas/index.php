@@ -75,9 +75,9 @@ $no = ($page - 1) * $limit + 1;
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="px-4 py-2">NO</th>
-                            <th class="px-4 py-2">ID</th>
                             <th class="px-4 py-2">Username</th>
                             <th class="px-4 py-2">Nama Petugas</th>
+                            <th class="px-4 py-2">Level</th>
                             <th class="px-4 py-2">Aksi</th>
                         </tr>
                     </thead>
@@ -86,9 +86,9 @@ $no = ($page - 1) * $limit + 1;
                             <?php foreach ($petugasData as $petugas): ?>
                                 <tr class="border-t">
                                 <td class="px-4 py-2"><?= htmlspecialchars($no++); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($petugas['id_petugas']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($petugas['username']); ?></td>
-                                    <td class="px-4 py-2"><?= htmlspecialchars($petugas['nama_petugas']); ?></td>
+                                <td class="px-4 py-2"><?= htmlspecialchars($petugas['username']); ?></td>
+                                <td class="px-4 py-2"><?= htmlspecialchars($petugas['nama_petugas']); ?></td>
+                                <td class="px-4 py-2"><?= htmlspecialchars($petugas['level']); ?></td>
                                     <td class="px-4 py-2">
                                         <a href="edit.php?id_petugas=<?= $petugas['id_petugas']; ?>" class="text-[#00FF33] hover:underline">Edit</a>
                                         <a href="index.php?delete=<?= $petugas['id_petugas']; ?>"

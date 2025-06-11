@@ -5,7 +5,7 @@ $year = date("Y");
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-8 md:gap-0">  
         <div class="flex flex-col gap-1 md:gap-2">  
             <span class="font-extrabold text-3xl text-gray-500 select-none">  
-                SPP  
+                SPP 
             </span>  
             <span class="uppercase text-xs tracking-widest font-semibold select-none">  
                 SCHOOL PAYMENT  

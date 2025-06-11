@@ -31,10 +31,10 @@
       </p>
 
       <div class="flex flex-wrap gap-4">
-        <a href="login/siswa.php" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition duration-300">
+        <a href="login/siswa.php" class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow transition duration-300">
           <i class="fas fa-sign-in-alt mr-2"></i> Login Siswa
         </a>
-        <a href="?go=about" class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow transition duration-300">
+        <a href="?go=about" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow transition duration-300">
           <i class="fas fa-info-circle mr-2"></i> Tentang Kami
         </a>
       </div>

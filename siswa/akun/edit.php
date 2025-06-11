@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <div>
-                <label class="block text-gray-700 font-medium" for="password">Password (Kosongkan jika tidak ingin mengubah)</label>
+                <label class="block text-gray-700 font-medium" for="password">Password</label>
                 <input type="password" id="password" name="password"
                     class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
                     placeholder="********">
